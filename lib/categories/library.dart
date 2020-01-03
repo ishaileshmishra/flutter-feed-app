@@ -8,8 +8,15 @@ class LibraryPage extends StatefulWidget {
 class _LibraryPageState extends State<LibraryPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('LIBRARY', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: SafeArea(
+          child: Container(
+            child: Text('LIBRARY', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          ),
+        ),
+      ),
     );
   }
 }
