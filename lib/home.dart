@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         tooltip: 'Create Post',
         onPressed: _showModal,
         child: Icon(CupertinoIcons.add),
-        elevation: 10,
+        //elevation: 10,
       ),
       bottomNavigationBar: FABBottomAppBar(
         color: Colors.grey,
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   void _showModal() {
     final List<NewPostModel> listModel = [
       NewPostModel(
-          title: 'Create a post',
+          title: 'Create a Post',
           subTitle: 'Share your thoughts with community',
           iconData: FontAwesomeIcons.pen),
       NewPostModel(
@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     onTap: () => print(listModel[index].title),
                     title: Text(listModel[index].title,
                         style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 14,
                             color: Theme.of(context).accentColor,
                             letterSpacing: 1.2,
                             fontWeight: FontWeight.bold)),
