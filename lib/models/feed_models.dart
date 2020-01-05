@@ -27,13 +27,9 @@ class FeedModel {
       this.members});
 }
 
-
-
-class Category{
-
+class Category {
   bool isSelected = false;
   String categoryType;
 
   Category({this.categoryType});
-
 }

@@ -115,7 +115,9 @@ class _HealthNestLoginState extends State<HealthNestLogin> {
                     child: RaisedButton(
                       //onPressed: _isButtonDisabled ? null : () {_sendToServer();},
                       onPressed: _sendToServer,
-                      child: Text('Send OTP', style: TextStyle( fontSize: 16, fontWeight: FontWeight.bold)),
+                      child: Text('Send OTP',
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold)),
                       //color: Theme.of(context).accentColor,
                       elevation: 5,
                     ),
@@ -149,7 +151,8 @@ class _HealthNestLoginState extends State<HealthNestLogin> {
       print("Mobile $consumerMobileNumber");
       print('Country ${_selectedCountry.name}');
 
-      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => HomePage()));
     } else {
       // validation error
       setState(() {

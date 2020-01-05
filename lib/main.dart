@@ -3,12 +3,11 @@ import 'package:flutter/widgets.dart';
 import 'package:healthnest/login.dart';
 
 void main() => runApp(MaterialApp(
-  title: 'HealthNest',
-  debugShowCheckedModeBanner: false,
-  theme: ThemeData(
-      primaryColor: Colors.grey,
-      accentColor: Colors.teal,
-      fontFamily: 'nunito'
-  ),
-  home: HealthNestLogin(),
-));
+      title: 'HealthNest',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          primaryColor: Colors.grey,
+          accentColor: Colors.teal,
+          fontFamily: 'nunito'),
+      home: HealthNestLogin(),
+    ));

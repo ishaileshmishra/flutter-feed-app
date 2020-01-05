@@ -21,11 +21,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
-
   int _selectedDrawerIndex = 0;
 
   _selectedTab(int pos) {
-
     setState(() {
       _onSelectItem(pos);
     });
@@ -42,9 +40,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       default:
         return Text("Error");
     }
-
   }
-
 
   _onSelectItem(int index) {
     setState(() => _selectedDrawerIndex = index);
@@ -56,11 +52,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     _selectedTab(_selectedDrawerIndex);
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _selectedTab(_selectedDrawerIndex),//Center(child: Text('Selected TAB $_lastSelected', style: TextStyle(fontSize: 32.0))),
+      body: _selectedTab(
+          _selectedDrawerIndex), //Center(child: Text('Selected TAB $_lastSelected', style: TextStyle(fontSize: 32.0))),
 
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
@@ -78,8 +74,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         items: [
           FABBottomAppBarItem(iconData: FontAwesomeIcons.listAlt, text: 'Feed'),
           FABBottomAppBarItem(iconData: FontAwesomeIcons.book, text: 'Library'),
-          FABBottomAppBarItem(iconData: FontAwesomeIcons.comments, text: 'Messages'),
-          FABBottomAppBarItem(iconData: FontAwesomeIcons.userFriends, text: 'Services'),
+          FABBottomAppBarItem(
+              iconData: FontAwesomeIcons.comments, text: 'Messages'),
+          FABBottomAppBarItem(
+              iconData: FontAwesomeIcons.userFriends, text: 'Services'),
         ],
       ),
     );
