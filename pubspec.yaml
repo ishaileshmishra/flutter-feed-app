@@ -25,7 +25,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   flutter_country_picker: ^0.1.6
   font_awesome_flutter: ^8.5.0
-  esys_flutter_share: ^1.0.2
+  share: ^0.6.3+5
   flutter_reaction_button: ^0.1.3
 
 

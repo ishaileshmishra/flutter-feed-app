@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:share/share.dart';
 
 class FeedItem extends StatelessWidget {
-  const FeedItem({
-    Key key,
-  }) : super(key: key);
+  
+  const FeedItem({ Key key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -74,15 +74,14 @@ class FeedItem extends StatelessWidget {
                                     ],
                                   ),
                                   Text('DIAGONASED RECENTALLY',
-                                      style: TextStyle(
-                                          fontSize: 9,
-                                          color:
-                                              Theme.of(context).accentColor)),
+                                      style: TextStyle( fontSize: 9, color:Theme.of(context).accentColor)),
                                 ],
                               ),
-                              Icon(
-                                CupertinoIcons.mic_solid,
-                                size: 18,
+                              GestureDetector(
+                                onTap: ()=> Share.share('check out my website https://example.com'),
+                                child: Container(
+                                  child: Icon(FontAwesomeIcons.ellipsisV, size: 18),
+                                ),
                               )
                             ],
                           ),
@@ -90,10 +89,7 @@ class FeedItem extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: 15),
-                    Text(
-                      'What are the sign and symptoms of Skin Cancer',
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    Text( 'What are the sign and symptoms of Skin Cancer', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 15),
                     Text(
@@ -117,7 +113,9 @@ class FeedItem extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: 15),
+
                     Divider(height: 2),
+
                     Padding(
                         padding: EdgeInsets.only(top: 20, bottom: 20),
                         child: Row(
@@ -150,17 +148,8 @@ class FeedItem extends StatelessWidget {
                         Icon(FontAwesomeIcons.bookmark, size: 18),
                         GestureDetector(
                             onTap: () {
-                              print('share the feed');
-                              SnackBar(
-                                content: Text('Yay! A SnackBar!'),
-                                action: SnackBarAction(
-                                  label: 'Undo',
-                                  onPressed: () {
-                                    // Some code to undo the change.
-                                  },
-                                ),
-                              );
-                              //Share.text('my text title', 'This is my text to share with other applications.', 'text/plain');
+                              print('share the feed Item');
+                              Share.share('check out my website https://example.com');
                             },
                             child: Icon(FontAwesomeIcons.shareAlt, size: 18))
                       ],

@@ -104,33 +104,37 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     ];
 
     Future<void> future = showModalBottomSheet<void>(
-      context: context,
-      builder: (BuildContext context) {
+      context: context, builder: (BuildContext context) {
         return Container(
-            height: 420,
-            margin: EdgeInsets.all(5),
+            height: 350,
             child: ListView.builder(
                 itemCount: listModel.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    onTap: () => print(listModel[index].title),
-                    title: Text(listModel[index].title,
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Theme.of(context).accentColor,
-                            letterSpacing: 1.2,
-                            fontWeight: FontWeight.bold)),
-                    leading: Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Colors.teal[100],
-                        borderRadius: BorderRadius.all(Radius.circular(45.0)),
+                  return Column(
+                    children: <Widget>[
+                      ListTile(
+                        onTap: () => print(listModel[index].title),
+                        title: Text(listModel[index].title,
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Theme.of(context).accentColor,
+                                letterSpacing: 1.2,
+                                fontWeight: FontWeight.bold)),
+                        leading: Container(
+                          padding: EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color: Colors.teal[100],
+                            borderRadius:BorderRadius.all(Radius.circular(45.0)),
+                          ),
+                          child: Icon(listModel[index].iconData, size: 15.0),
+                        ),
+                        subtitle: Text(listModel[index].subTitle),
+                        //contentPadding: EdgeInsets.all(12),
+                        trailing: Icon( CupertinoIcons.forward, color: Colors.grey[400],
+                        ),
                       ),
-                      child: Icon(listModel[index].iconData, size: 15.0),
-                    ),
-                    subtitle: Text(listModel[index].subTitle),
-                    contentPadding: EdgeInsets.all(12),
-                    trailing: Icon(CupertinoIcons.forward),
+                      Divider(thickness: 2)
+                    ],
                   );
                 }));
       },
