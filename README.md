@@ -1,6 +1,6 @@
 # HealthNest
 
-A new Flutter application made To make aware people of world bout the diseases and symptoms of the diseases.
+A new Flutter application made To make aware people of world bout the diseases and symptoms of the diseases. Questions & answer sessions and more..
 
 
 ## Getting Started
