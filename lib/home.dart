@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       NewPostModel(
           title: 'Start a Poll',
           subTitle: 'Need the option of the many ?',
-          iconData: FontAwesomeIcons.poll),
+          iconData: Icons.equalizer),
       NewPostModel(
           title: 'Organise an Event',
           subTitle: 'Start meet with people to share your joys',
