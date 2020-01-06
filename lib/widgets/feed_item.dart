@@ -4,8 +4,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:share/share.dart';
 
 class FeedItem extends StatelessWidget {
-  
-  const FeedItem({ Key key,}) : super(key: key);
+  const FeedItem({
+    Key key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +22,7 @@ class FeedItem extends StatelessWidget {
                   children: <Widget>[
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(
+                      children: <Widget>[ Text(
                           'DIET',
                           style: TextStyle(
                               fontSize: 14,
@@ -74,13 +74,17 @@ class FeedItem extends StatelessWidget {
                                     ],
                                   ),
                                   Text('DIAGONASED RECENTALLY',
-                                      style: TextStyle( fontSize: 9, color:Theme.of(context).accentColor)),
+                                      style: TextStyle(
+                                          fontSize: 9,
+                                          color:
+                                              Theme.of(context).accentColor)),
                                 ],
                               ),
                               GestureDetector(
-                                onTap: ()=> Share.share('check out my website https://example.com'),
+                                onTap: () => _showPopupMenu(context),
                                 child: Container(
-                                  child: Icon(FontAwesomeIcons.ellipsisV, size: 18),
+                                  child: Icon(FontAwesomeIcons.ellipsisV,
+                                      size: 18),
                                 ),
                               )
                             ],
@@ -89,7 +93,10 @@ class FeedItem extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: 15),
-                    Text( 'What are the sign and symptoms of Skin Cancer', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    Text(
+                      'What are the sign and symptoms of Skin Cancer',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 15),
                     Text(
@@ -113,9 +120,7 @@ class FeedItem extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: 15),
-
                     Divider(height: 2),
-
                     Padding(
                         padding: EdgeInsets.only(top: 20, bottom: 20),
                         child: Row(
@@ -138,7 +143,7 @@ class FeedItem extends StatelessWidget {
                         GestureDetector(
                             onTap: () {
                               print('Like tapped');
-                              showOptions();
+                              //showOptions();
                             },
                             child: Icon(
                               FontAwesomeIcons.thumbsUp,
@@ -149,7 +154,8 @@ class FeedItem extends StatelessWidget {
                         GestureDetector(
                             onTap: () {
                               print('share the feed Item');
-                              Share.share('check out my website https://example.com');
+                              Share.share(
+                                  'check out my website https://example.com');
                             },
                             child: Icon(FontAwesomeIcons.shareAlt, size: 18))
                       ],
@@ -161,5 +167,54 @@ class FeedItem extends StatelessWidget {
         });
   }
 
-  void showOptions() {}
+  _showPopupMenu(BuildContext context) async {
+    await showMenu(
+      context: context,
+      position: RelativeRect.fromLTRB(100, 400, 100, 400),
+      items: [
+        
+        PopupMenuItem(
+          child: ListTile(
+            leading: Icon(FontAwesomeIcons.userTimes, size: 15),
+            onTap: ()=> print('hide'),
+            title: Text('Hide <Post type>'),
+            subtitle: Text('See fewer posts like this'),
+          ),
+        ),
+        
+        PopupMenuItem(
+          child: ListTile(
+            leading: Icon(FontAwesomeIcons.solidEyeSlash, size: 15,),
+            onTap: ()=> print('Unfollow <username>'),
+            title: Text('Unfollow <username>'),
+            subtitle: Text('See fewer posts like this'),
+          ),
+        ),
+        
+        PopupMenuItem(
+          child: ListTile(
+            leading: Icon(Icons.report),
+            onTap: ()=> print('Report'),
+            title: Text('Report <Post type>'),
+            subtitle: Text('See fewer posts like this'),
+          ),
+        ),
+
+        PopupMenuItem(
+          child: ListTile(
+            leading: Icon(Icons.link),
+            onTap: ()=> print('hide'),
+            title: Text('Copy <Post type> link'),
+            subtitle: Text('See fewer posts like this'),
+          ),
+        ),
+
+      ],
+      elevation: 8.0,
+    );
+  }
+
+  
+
+
 }
