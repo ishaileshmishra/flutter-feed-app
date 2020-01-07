@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:healthnest/categories/feed.dart';
-import 'package:healthnest/categories/library.dart';
-import 'package:healthnest/categories/messages.dart';
-import 'package:healthnest/categories/services.dart';
+import 'package:healthnest/categories/feed/feed.dart';
+import 'package:healthnest/categories/library/library.dart';
+import 'package:healthnest/categories/message/messages.dart';
+import 'package:healthnest/categories/services/services.dart';
 import 'package:healthnest/navigation/fab_bottom_app_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

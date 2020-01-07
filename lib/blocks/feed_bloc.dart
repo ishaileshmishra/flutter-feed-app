@@ -8,7 +8,7 @@
 //TODO: Core functions
 //TODO: Dispose
 
-// stream is already been cooked in flutter
+//Stream Is Already Been Cooked In Flutter
 
 import 'dart:async';
 import 'feed.dart';
