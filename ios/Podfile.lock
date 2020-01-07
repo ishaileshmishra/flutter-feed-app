@@ -6,13 +6,13 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
-  - Flutter (from `.symlinks/flutter/ios`)
+  - Flutter (from `Flutter`)
   - flutter_country_picker (from `.symlinks/plugins/flutter_country_picker/ios`)
   - share (from `.symlinks/plugins/share/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
-    :path: ".symlinks/flutter/ios"
+    :path: Flutter
   flutter_country_picker:
     :path: ".symlinks/plugins/flutter_country_picker/ios"
   share:
@@ -23,6 +23,6 @@ SPEC CHECKSUMS:
   flutter_country_picker: b73efbc3f1b01519adb99bf8635865737b9422df
   share: bae0a282aab4483288913fc4dc0b935d4b491f2e
 
-PODFILE CHECKSUM: b6a0a141693093b304368d08511b46cf3d1d0ac5
+PODFILE CHECKSUM: 1b66dae606f75376c5f2135a8290850eeb09ae83
 
 COCOAPODS: 1.8.4

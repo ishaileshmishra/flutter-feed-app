@@ -10,6 +10,13 @@ class Feed {
       this.name, this.avatarImg, this.bannerImg,
       this.location, this.likes, this.comments,
       this.members);
+}
 
 
+
+class Category {
+  bool isSelected = false;
+  String categoryType;
+
+  Category({this.categoryType});
 }
