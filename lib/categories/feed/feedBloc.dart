@@ -9,20 +9,17 @@
 //TODO: Dispose
 
 //Stream Is Already Been Cooked In Flutter
-
 import 'dart:async';
 import 'package:healthnest/categories/feed/feed_model.dart';
-import 'feed.dart';
 
 class FeedBloc {
-
   static String _descriptionIsLong =
       "I have been facing a facing possible symptoms of skin cancer. "
       "I have googled all possibilities but i thought i'd asked community instead...";
 
   // 1. list of feeds done
   List<Feed> _feedList = [
-
+    //this.feedId, this.title, this.description, this.category, this.subcategory, this.time, this.name, this.avatarImg, this.bannerImg, this.location, this.likes, this.comments, this.members
 
     Feed(
         1,
@@ -30,7 +27,7 @@ class FeedBloc {
         _descriptionIsLong,
         'Entertainment',
         'Asked a question',
-        '2:29',
+        '21:29',
         'What Are The Sign And Symptoms Of Skin Cancer !',
         'https://www.w3schools.com/w3images/avatar1.png',
         'https://www.w3schools.com/w3images/avatar1.png',
@@ -115,44 +112,39 @@ class FeedBloc {
   final _feedLikeIncrementController = StreamController<Feed>();
   final _feedLikeDecrementController = StreamController<Feed>();
 
-
   // 3. Stream Sink Getter
   Stream<List<Feed>> get feedListStream => _feedListStreamController.stream;
-  StreamSink<List<Feed>> get feedListSink  => _feedListStreamController.sink;
+  StreamSink<List<Feed>> get feedListSink => _feedListStreamController.sink;
 
-  StreamSink<Feed> get feedLikeIncrement  => _feedLikeIncrementController.sink;
-  StreamSink<Feed> get feedLikeDecrement  => _feedLikeDecrementController.sink;
+  StreamSink<Feed> get feedLikeIncrement => _feedLikeIncrementController.sink;
+  StreamSink<Feed> get feedLikeDecrement => _feedLikeDecrementController.sink;
 
   // Constructor
-  FeedBloc(){
+  FeedBloc() {
     _feedListStreamController.add(_feedList);
     _feedLikeIncrementController.stream.listen(_incrementLike);
     _feedLikeDecrementController.stream.listen(_decrementLike);
   }
 
-
   // Core Functions
-  _incrementLike(Feed feed){
+  _incrementLike(Feed feed) {
     int like = feed.likes;
-    int incrementLike = like+1;
-    _feedList[feed.feedId -1].likes = like + incrementLike;
+    int incrementLike = like + 1;
+    _feedList[feed.feedId - 1].likes = like + incrementLike;
     feedListSink.add(_feedList);
   }
 
-  _decrementLike(Feed feed){
+  _decrementLike(Feed feed) {
     int like = feed.likes;
-    int decrementLike = like-1;
-    _feedList[feed.feedId -1].likes = like - decrementLike;
+    int decrementLike = like - 1;
+    _feedList[feed.feedId - 1].likes = like - decrementLike;
     feedListSink.add(_feedList);
   }
-
 
   // dispose.
-  dispose(){
+  dispose() {
     _feedLikeDecrementController.close();
     _feedLikeIncrementController.close();
     _feedListStreamController.close();
-
   }
-
 }

@@ -5,7 +5,6 @@ import 'package:healthnest/postpage/postdetail_page.dart';
 import 'package:share/share.dart';
 
 Widget feedCard(BuildContext context, Feed listFeed) {
-
   return Card(
     child: GestureDetector(
       onTap: () => Navigator.push(
@@ -15,104 +14,24 @@ Widget feedCard(BuildContext context, Feed listFeed) {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    listFeed.name,
-                    style: TextStyle(fontSize: 14, color: Theme.of(context).primaryColor),
-                  ),
-                  Text(
-                    listFeed.time,
-                    style: TextStyle(
-                        fontSize: 14, color: Theme.of(context).primaryColor),
-                  ),
-                ],
-              ),
-              SizedBox(height: 10),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Column(
-                          //crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                CircleAvatar(
-                                    backgroundColor:
-                                        Theme.of(context).primaryColor,
-                                    child: ClipOval(
-                                        child:
-                                            Image.network(listFeed.avatarImg)),
-                                    radius: 20),
-                                SizedBox(width: 10),
-                                Text(
-                                  listFeed.name,
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                SizedBox(width: 8),
-                                Text(
-                                  listFeed.category,
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      color: Theme.of(context).primaryColor),
-                                ),
-                              ],
-                            ),
-                            Text(listFeed.category,
-                                style: TextStyle(
-                                    fontSize: 9,
-                                    color: Theme.of(context).accentColor)),
-                          ],
-                        ),
-                        GestureDetector(
-                          onTap: () => _showPopupMenu(context),
-                          child: Container(
-                            child: Icon(FontAwesomeIcons.ellipsisV, size: 18),
-                          ),
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(height: 15),
-              Text(
-                'What are the sign and symptoms of Skin Cancer',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 15),
-              Text(
-                'I have been facing few possible symptom of skin cancer, I have googled the possibility but i thought to ask community',
-                style: TextStyle(fontSize: 14, color: Colors.grey),
-              ),
-              SizedBox(height: 15),
-              Row(
-                children: <Widget>[
-                  Icon(
-                    Icons.location_on,
-                    color: Theme.of(context).accentColor,
-                  ),
-                  SizedBox(width: 15),
-                  Text(
-                    'Park Andheri East',
-                    style: TextStyle(
-                        fontSize: 12, color: Theme.of(context).accentColor),
-                  ),
-                ],
-              ),
+              renderCategoryTime(listFeed),
+              space10(),
+              userAvatarSection(context, listFeed),
+              space15(),
+              Text(listFeed.name,
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              space15(),
+              Text(listFeed.description,
+                  style: TextStyle(fontSize: 14, color: Colors.grey)),
+              space15(),
+              setLocation(listFeed),
               Divider(thickness: 1),
               Row(
                 children: <Widget>[
                   Icon(FontAwesomeIcons.addressBook),
                   SizedBox(width: 10),
                   Text(
-                    'Members have this questions',
+                    '${listFeed.members} Members have this questions',
                     style: TextStyle(
                         fontSize: 14, color: Theme.of(context).primaryColor),
                   ),
@@ -120,52 +39,144 @@ Widget feedCard(BuildContext context, Feed listFeed) {
               ),
               Divider(thickness: 1),
               SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  GestureDetector(
-                      onTap: () => debugPrint('${listFeed.likes} tapped'),
-                      child: Row(
-                        children: <Widget>[
-                          Icon(
-                            FontAwesomeIcons.thumbsUp,
-                            size: 18,
-                          ),
-                          SizedBox(width: 5),
-                          Text('${listFeed.likes}')
-                        ],
-                      )),
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        GestureDetector(
-                            onTap: () => debugPrint('Comment Tapped'),
-                            child: Row(
-                              children: <Widget>[
-                                Icon(FontAwesomeIcons.comment, size: 18),
-                                SizedBox(width: 5),
-                                Text(listFeed.comments)
-                              ],
-                            ))
-                      ]),
-                  Icon(FontAwesomeIcons.bookmark, size: 18),
-                  GestureDetector(
-                      onTap: () {
-                        Share.share('check out my website https://example.com');
-                      },
-                      child: Icon(FontAwesomeIcons.shareAlt, size: 18))
-                ],
-              ),
-              SizedBox(height: 15),
+              likeCommentShare(listFeed),
+              space15(),
             ],
           )),
     ),
   );
 }
 
+Widget likeCommentShare(Feed listFeed) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: <Widget>[
+      GestureDetector(
+          onTap: () => debugPrint('${listFeed.likes} tapped'),
+          child: Row(
+            children: <Widget>[
+              Icon(
+                FontAwesomeIcons.thumbsUp,
+                size: 18,
+              ),
+              SizedBox(width: 5),
+              Text('${listFeed.likes}')
+            ],
+          )),
+      Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            GestureDetector(
+                onTap: () => debugPrint('Comment Tapped'),
+                child: Row(
+                  children: <Widget>[
+                    Icon(FontAwesomeIcons.comment, size: 18),
+                    SizedBox(width: 5),
+                    Text(listFeed.comments)
+                  ],
+                ))
+          ]),
+      Icon(FontAwesomeIcons.bookmark, size: 18),
+      GestureDetector(
+          onTap: () {
+            Share.share('check out my website https://example.com');
+          },
+          child: Icon(FontAwesomeIcons.shareAlt, size: 18))
+    ],
+  );
+}
+
+Widget setLocation(Feed listFeed) {
+  return Row(
+    children: <Widget>[
+      Icon(Icons.location_on, color: Colors.teal),
+      SizedBox(width: 15),
+      Text(
+        listFeed.location,
+        style: TextStyle(fontSize: 12, color: Colors.teal),
+      ),
+    ],
+  );
+}
+
+Widget userAvatarSection(BuildContext context, Feed listFeed) {
+  return Row(
+    children: <Widget>[
+      Expanded(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    //Person Avatar Image round shape
+                    CircleAvatar(
+                        backgroundColor: Colors.grey,
+                        child:
+                            ClipOval(child: Image.network(listFeed.avatarImg)),
+                        radius: 20),
+
+                    space10(),
+
+                    Text(listFeed.title,
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold)),
+
+                    SizedBox(width: 8),
+
+                    Text(listFeed.category,
+                        style: TextStyle(fontSize: 14, color: Colors.grey))
+                  ],
+                ),
+                Text('DIAGNOSED RECENTALLY',
+                    style: TextStyle(fontSize: 9, color: Colors.teal)),
+              ],
+            ),
+            shareGesture(context),
+          ],
+        ),
+      )
+    ],
+  );
+}
+
+Widget shareGesture(BuildContext context) {
+  return GestureDetector(
+    // Just For Demo, Doesn't Work As Needed
+    onTap: () => _showPopupMenu(context),
+    child: Container(
+      child: Icon(FontAwesomeIcons.ellipsisV, size: 18),
+    ),
+  );
+}
+
+Widget space10() {
+  // Provides 10 Pixel height
+  return SizedBox(height: 10);
+}
+
+Widget space15() {
+  // Provides 10 Pixel height
+  return SizedBox(height: 15);
+}
+
+Widget renderCategoryTime(Feed listFeed) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: <Widget>[
+      Text(listFeed.category,
+          style: TextStyle(fontSize: 14, color: Colors.grey)),
+      Text(listFeed.time, style: TextStyle(fontSize: 14, color: Colors.grey)),
+    ],
+  );
+}
+
 _showPopupMenu(BuildContext context) async {
+  // Using await, instead can use direct list of widgets, It will be useful if the option will render from the cloud.
+
   await showMenu(
     context: context,
     position: RelativeRect.fromLTRB(100, 400, 100, 400),
