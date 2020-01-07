@@ -1,15 +1,14 @@
+// creating facebook like emoji
 import 'package:flutter/material.dart';
 
+
 class AnchoredOverlay extends StatelessWidget {
+
   final bool showOverlay;
   final Widget Function(BuildContext, Offset anchor) overlayBuilder;
   final Widget child;
 
-  AnchoredOverlay({
-    this.showOverlay,
-    this.overlayBuilder,
-    this.child,
-  });
+  AnchoredOverlay({ this.showOverlay, this.overlayBuilder, this.child });
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +19,7 @@ class AnchoredOverlay extends StatelessWidget {
           showOverlay: showOverlay,
           overlayBuilder: (BuildContext overlayContext) {
             RenderBox box = context.findRenderObject() as RenderBox;
-            final center =
-                box.size.center(box.localToGlobal(const Offset(0.0, 0.0)));
-
+            final center = box.size.center(box.localToGlobal(const Offset(0.0, 0.0)));
             return overlayBuilder(overlayContext, center);
           },
           child: child,

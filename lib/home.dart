@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       case 3:
         return ServicePage();
       default:
-        return Text("Error");
+        return Text("Invalid screen requested");
     }
   }
 

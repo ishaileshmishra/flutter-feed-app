@@ -14,11 +14,9 @@ class _HealthNestLoginState extends State<HealthNestLogin> {
   GlobalKey<FormState> _key = new GlobalKey();
   bool _validate = false;
   String consumerMobileNumber;
-  //bool _isButtonDisabled;
 
   @override
   void initState() {
-    //_isButtonDisabled = false;
     _selectedCountry = Country.IN;
     super.initState();
   }
