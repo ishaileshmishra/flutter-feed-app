@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:healthnest/categories/feed/feedBloc.dart';
+import 'package:healthnest/categories/feed/feed_model.dart';
 import 'package:healthnest/categories/feed/widgetFeed.dart';
+import 'package:healthnest/widget/feedCard.dart';
 
 class FeedPage extends StatefulWidget {
   @override
@@ -8,12 +11,18 @@ class FeedPage extends StatefulWidget {
 }
 
 class _FeedPageState extends State<FeedPage> {
+  final FeedBloc feedBloc = FeedBloc();
 
   @override
   void initState() {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    feedBloc.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +39,22 @@ class _FeedPageState extends State<FeedPage> {
               horizontalCategories(),
               topSpace(),
               // Expand Feed ListView In The Available space.
-              Expanded(child: FeedItemCard()),
+              Expanded(
+                child: Container(
+                  child: StreamBuilder<List<Feed>>(
+                    stream: feedBloc.feedListStream,
+                    builder: (BuildContext context,
+                        AsyncSnapshot<List<Feed>> snapshot) {
+                      return ListView.builder(
+                          itemCount: snapshot.data.length,
+                          itemBuilder: (context, index) {
+                            return feedCard(context, snapshot.data[index]);
+                          });
+                    },
+                  ),
+                ),
+                //child: FeedItemCard()
+              ),
             ],
           ),
         ),
