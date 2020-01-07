@@ -6,9 +6,11 @@ class Feeds {
 //  this.likes, this.comments, this.members
 
   List<FeedModel> feedList = [
-    FeedModel(title: 'rohit.shetty12'),
-    FeedModel(),
-    FeedModel(),
+    FeedModel(title: 'rohit.shetty12', description: '', category: '', subcategory: '', time: '', name: '', avatarImg: '', bannerImg: '', location: '', likes: '', comments: '', members: ''),
+    FeedModel(title: 'ishaileshmishra', description: '', category: '', subcategory: '', time: '', name: '', avatarImg: '', bannerImg: '', location: '', likes: '', comments: '', members: ''),
+    FeedModel(title: 'narendramodi09', description: '', category: '', subcategory: '', time: '', name: '', avatarImg: '', bannerImg: '', location: '', likes: '', comments: '', members: ''),
+    FeedModel(title: 'strams.example02', description: '', category: '', subcategory: '', time: '', name: '', avatarImg: '', bannerImg: '', location: '', likes: '', comments: '', members: ''),
+    FeedModel(title: 'be.spritual01', description: '', category: '', subcategory: '', time: '', name: '', avatarImg: '', bannerImg: '', location: '', likes: '', comments: '', members: ''),
   ];
 
   List<Category> listCategory = [
