@@ -113,22 +113,12 @@ Widget userAvatarSection(BuildContext context, Feed listFeed) {
                 Row(
                   children: <Widget>[
                     //Person Avatar Image round shape
-                    CircleAvatar(
-                        backgroundColor: Colors.grey,
-                        child:
-                            ClipOval(child: Image.network(listFeed.avatarImg)),
-                        radius: 20),
-
-                    space10(),
-
-                    Text(listFeed.title,
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.bold)),
-
+                    CircleAvatar(backgroundColor: Colors.grey,
+                        child: ClipOval(child: Image.network(listFeed.avatarImg)), radius: 20),
+                    SizedBox(width: 10),
+                    Text(listFeed.title, style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
                     SizedBox(width: 8),
-
-                    Text(listFeed.category,
-                        style: TextStyle(fontSize: 14, color: Colors.grey))
+                    Text(listFeed.category, style: TextStyle(fontSize: 14, color: Colors.grey))
                   ],
                 ),
                 Text('DIAGNOSED RECENTALLY',
