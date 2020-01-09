@@ -19,8 +19,8 @@ class _FeedPageState extends State<FeedPage> {
   }
 
   @override
-  void dispose() {
-    feedBloc.dispose();
+  void dispose() async{
+    await feedBloc.dispose();
     super.dispose();
   }
 
