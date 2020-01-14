@@ -6,11 +6,13 @@ import 'package:healthnest/categories/feed/widgetFeed.dart';
 import 'package:healthnest/widget/feedCard.dart';
 
 class FeedPage extends StatefulWidget {
+
   @override
   _FeedPageState createState() => _FeedPageState();
 }
 
 class _FeedPageState extends State<FeedPage> {
+
   final FeedBloc feedBloc = FeedBloc();
 
   @override
@@ -19,8 +21,8 @@ class _FeedPageState extends State<FeedPage> {
   }
 
   @override
-  void dispose() async{
-    await feedBloc.dispose();
+  void dispose() {
+    feedBloc.dispose();
     super.dispose();
   }
 
@@ -43,12 +45,20 @@ class _FeedPageState extends State<FeedPage> {
                 child: Container(
                   child: StreamBuilder<List<Feed>>(
                     stream: feedBloc.feedListStream,
-                    builder: (BuildContext context,
-                        AsyncSnapshot<List<Feed>> snapshot) {
+                    builder: (BuildContext context, AsyncSnapshot<List<Feed>> snapshot) {
                       return ListView.builder(
                           itemCount: snapshot.data.length,
                           itemBuilder: (context, index) {
+
+                            if (!snapshot.hasData){
+                              return CircularProgressIndicator();
+                            }
+                            if (snapshot.hasError){
+                              return Center(child: Text('Error while fetching feeds', style: TextStyle(fontSize: 20,color: Colors.red),));
+                            }
+
                             return feedCard(context, snapshot.data[index]);
+
                           });
                     },
                   ),

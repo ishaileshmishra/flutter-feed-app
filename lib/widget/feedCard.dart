@@ -5,6 +5,7 @@ import 'package:healthnest/postpage/postdetail_page.dart';
 import 'package:share/share.dart';
 
 Widget feedCard(BuildContext context, Feed listFeed) {
+
   return Card(
     child: GestureDetector(
       onTap: () => Navigator.push(
@@ -18,8 +19,7 @@ Widget feedCard(BuildContext context, Feed listFeed) {
               space10(),
               userAvatarSection(context, listFeed),
               space15(),
-              Text(listFeed.name,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              Text(listFeed.name, softWrap: true, maxLines: 2,style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
               space15(),
               Text(listFeed.description,
                   style: TextStyle(fontSize: 14, color: Colors.grey)),
@@ -113,12 +113,18 @@ Widget userAvatarSection(BuildContext context, Feed listFeed) {
                 Row(
                   children: <Widget>[
                     //Person Avatar Image round shape
-                    CircleAvatar(backgroundColor: Colors.grey,
-                        child: ClipOval(child: Image.network(listFeed.avatarImg)), radius: 20),
+                    CircleAvatar(
+                        backgroundColor: Colors.grey,
+                        child:
+                            ClipOval(child: Image.network(listFeed.avatarImg)),
+                        radius: 20),
                     SizedBox(width: 10),
-                    Text(listFeed.title, style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+                    Text(listFeed.title,
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold)),
                     SizedBox(width: 8),
-                    Text(listFeed.category, style: TextStyle(fontSize: 14, color: Colors.grey))
+                    Text(listFeed.category,
+                        style: TextStyle(fontSize: 14, color: Colors.grey))
                   ],
                 ),
                 Text('DIAGNOSED RECENTALLY',
@@ -133,9 +139,7 @@ Widget userAvatarSection(BuildContext context, Feed listFeed) {
   );
 }
 
-
 Widget shareGesture(BuildContext context) {
-
   return GestureDetector(
     // Just For Demo, Doesn't Work As Needed
     onTap: () => _showPopupMenu(context),
