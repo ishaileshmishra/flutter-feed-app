@@ -12,15 +12,15 @@ class _PostPageDetailsState extends State<PostPageDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Questions')),
+      appBar: AppBar(
+        title: Text('Questions'),
+        elevation: 0,
+        backgroundColor: Colors.white,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
-            children: <Widget>[
-
-              FeedCard(context)
-
-            ],
+            children: <Widget>[FeedCard(context)],
           ),
         ),
       ),

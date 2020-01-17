@@ -1,14 +1,13 @@
 // Bloc Pattern for the feed.
-
-// TODO: Imports
-// TODO: List of Feeds
-// TODO: Stream controller
-// TODO: Stream sink getter
-// TODO: Constructor - Add Likes, Listen to the changes
-// TODO: Core functions
-// TODO: Dispose
-
+// STEP-1: Imports
+// STEP-2: List of Feeds
+// STEP-3: Stream controller
+// STEP-4: Stream sink getter
+// STEP-5: Constructor - Add Likes, Listen to the changes
+// STEP-6: Core functions
+// STEP-7: Dispose
 //Stream Is Already Been Cooked In Flutter
+
 import 'dart:async';
 import 'package:healthnest/categories/feed/feed_model.dart';
 
@@ -18,7 +17,6 @@ class FeedBloc {
       "I have googled all possibilities but i thought i'd asked community instead...";
 
   List<Feed> _feedList = [
-    //this.feedId, this.title, this.description, this.category, this.subcategory, this.time, this.name, this.avatarImg, this.bannerImg, this.location, this.likes, this.comments, this.members
     Feed(
         feedId: 1,
         type: 0,
@@ -27,7 +25,7 @@ class FeedBloc {
         category: 'Entertainment',
         subcategory: 'Asked a question',
         time: '21:29',
-        name: 'What Are The Sign And Symptoms Of Skin Cancer cnwecnejcnejcn !',
+        name: 'What Are The Sign And Symptoms Of Skin Cancer!',
         avatarImg: 'https://www.w3schools.com/w3images/avatar1.png',
         bannerImg: 'https://www.w3schools.com/w3images/avatar1.png',
         location: 'Peninsula park Andheri, Mumbai',
@@ -37,14 +35,14 @@ class FeedBloc {
     Feed(
         feedId: 2,
         type: 1,
-        title: '',
+        title: 'ishaileshmishra',
         description: _descriptionIsLong,
-        category: 'Entertainment',
+        category: 'Medical',
         subcategory: 'Asked a question',
         time: '21:29',
-        name: 'What Are The Sign And Symptoms Of Skin Cancer cnwecnejcnejcn !',
-        avatarImg: 'https://www.w3schools.com/w3images/avatar1.png',
-        bannerImg: 'https://www.w3schools.com/w3images/avatar1.png',
+        name: 'What Are The Sign And Symptoms Of Skin Cancer !',
+        avatarImg: 'https://www.w3schools.com/w3images/avatar2.png',
+        bannerImg: 'https://www.w3schools.com/w3images/avatar2.png',
         location: 'Peninsula park Andheri, Mumbai',
         likes: 23,
         comments: '2',
@@ -52,49 +50,48 @@ class FeedBloc {
     Feed(
         feedId: 3,
         type: 0,
-        title: 'rohit.shetty02',
+        title: 'mahesh.rawat2121',
         description: _descriptionIsLong,
-        category: 'Entertainment',
+        category: 'Love',
         subcategory: 'Asked a question',
         time: '21:29',
-        name: 'What Are The Sign And Symptoms Of Skin Cancer cnwecnejcnejcn !',
-        avatarImg: 'https://www.w3schools.com/w3images/avatar1.png',
-        bannerImg: 'https://www.w3schools.com/w3images/avatar1.png',
-        location: 'Peninsula park Andheri, Mumbai',
+        name: 'What are the problem in love affairs',
+        avatarImg: 'https://www.w3schools.com/w3images/avatar3.png',
+        bannerImg: 'https://www.w3schools.com/w3images/avatar3.png',
+        location: 'virar, Thakur College, Mumbai',
         likes: 23,
         comments: '2',
         members: '12'),
     Feed(
         feedId: 4,
         type: 0,
-        title: 'rohit.shetty02',
+        title: 'rohit.mishra242',
         description: _descriptionIsLong,
-        category: 'Entertainment',
+        category: 'Jobs',
         subcategory: 'Asked a question',
         time: '21:29',
-        name: 'What Are The Sign And Symptoms Of Skin Cancer cnwecnejcnejcn !',
-        avatarImg: 'https://www.w3schools.com/w3images/avatar1.png',
-        bannerImg: 'https://www.w3schools.com/w3images/avatar1.png',
-        location: 'Peninsula park Andheri, Mumbai',
+        name: 'What Are The Sign And Symptoms Of Skin Cancer !',
+        avatarImg: 'https://www.w3schools.com/w3images/avatar4.png',
+        bannerImg: 'https://www.w3schools.com/w3images/avatar4.png',
+        location: 'Kandivali, lokhandwala, Mumbai',
         likes: 23,
         comments: '2',
         members: '12'),
     Feed(
         feedId: 5,
         type: 0,
-        title: 'rohit.shetty02',
-        description: _descriptionIsLong,
-        category: 'Entertainment',
-        subcategory: 'Asked a question',
+        title: 'ram.ramesh099',
+        description: 'Now that we’ve covered creating, manipulating and listening to streams, Let’s talk about how to put them to work with widgets in Flutter',
+        category: 'News',
+        subcategory: 'Information',
         time: '21:29',
-        name: 'What Are The Sign And Symptoms Of Skin Cancer cnwecnejcnejcn !',
-        avatarImg: 'https://www.w3schools.com/w3images/avatar1.png',
-        bannerImg: 'https://www.w3schools.com/w3images/avatar1.png',
+        name: 'Using Text inside the StreamBuilder!',
+        avatarImg: 'https://www.w3schools.com/w3images/avatar5.png',
+        bannerImg: 'https://www.w3schools.com/w3images/avatar5.png',
         location: 'Peninsula park Andheri, Mumbai',
         likes: 23,
         comments: '2',
         members: '12'),
-
   ];
 
   // 2. Stream controller

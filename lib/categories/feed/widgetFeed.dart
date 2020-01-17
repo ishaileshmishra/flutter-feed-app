@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:healthnest/categories/feed/feed_model.dart';
 
 Widget actionBarRow() {
   String circleAvatar = 'https://www.w3schools.com/w3images/avatar3.png';
@@ -35,8 +34,8 @@ Widget actionBarRow() {
       ),
       CircleAvatar(
           child: ClipOval(child: Image.network(circleAvatar)),
-          radius: 25,
-          backgroundColor: Colors.grey[300])
+          radius: 20,
+          backgroundColor: Colors.grey)
     ],
   );
 }
@@ -69,59 +68,24 @@ Widget searchTextField() {
   );
 }
 
-Widget horizontalCategories() {
-  // horizontal category list
-  List<Category> listCategory = [
-    Category(categoryType: 'All posts'),
-    Category(categoryType: 'News'),
-    Category(categoryType: 'Doctor'),
-    Category(categoryType: 'Lifestyle'),
-    Category(categoryType: 'Symptom'),
-    Category(categoryType: 'Entertainment'),
-    Category(categoryType: 'Love'),
-  ];
+// This helps to build the hosrizontal list of the category items
 
-  return SizedBox(
-      height: 50,
-      child: Container(
-        child: ListView.builder(
-            itemCount: listCategory.length,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () => debugPrint('${listCategory[index]} Tapped'),
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  margin: EdgeInsets.all(4),
-                  decoration: index == 0  ? selectedBoxDecoration() : boxDecoration(),
-                  child: Text(
-                    listCategory[index].categoryType,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.teal, fontSize: 14),
-                  ),
-                ),
-              );
-            }),
-      ));
-}
 
 BoxDecoration boxDecoration() {
   return BoxDecoration(
       borderRadius: BorderRadius.all(Radius.circular(30)),
-      border: Border.all(width: 1, style: BorderStyle.solid, color: Colors.teal));
+      border:
+          Border.all(width: 1, style: BorderStyle.solid, color: Colors.teal));
 }
-
 
 BoxDecoration selectedBoxDecoration() {
   return BoxDecoration(
       borderRadius: BorderRadius.all(Radius.circular(30)),
       color: Colors.teal[200],
-      border: Border.all(
-          width: 1,
-          style: BorderStyle.solid,
-          color: Colors.teal));
+      border:
+          Border.all(width: 1, style: BorderStyle.solid, color: Colors.teal));
 }
 
 Widget topSpace() {
-  return SizedBox(height: 15);
+  return SizedBox(height: 10);
 }

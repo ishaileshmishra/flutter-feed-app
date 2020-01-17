@@ -6,14 +6,7 @@ import 'package:healthnest/categories/message/messages.dart';
 import 'package:healthnest/categories/services/services.dart';
 import 'package:healthnest/navigation/fab_bottom_app_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-class NewPostModel {
-  String title;
-  String subTitle;
-  IconData iconData;
-
-  NewPostModel({this.title, this.subTitle, this.iconData});
-}
+import 'package:healthnest/ui/NewsFeed.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -21,6 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+
   int _selectedDrawerIndex = 0;
 
   _selectedTab(int pos) {
@@ -30,7 +24,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
     switch (pos) {
       case 0:
-        return FeedPage();
+        return NewsFeed();//FeedPage();
       case 1:
         return LibraryPage();
       case 2:
@@ -55,18 +49,20 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _selectedTab(
-          _selectedDrawerIndex), //Center(child: Text('Selected TAB $_lastSelected', style: TextStyle(fontSize: 32.0))),
 
+      body: _selectedTab(_selectedDrawerIndex),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
       floatingActionButton: FloatingActionButton(
         tooltip: 'Create Post',
-        onPressed: _showModal,
+        splashColor: Colors.teal,
+        onPressed: _onCenterBottomFloatingPressed,
         child: Icon(CupertinoIcons.add),
-        //elevation: 10,
+        elevation: 10,
       ),
+
       bottomNavigationBar: FABBottomAppBar(
-        color: Colors.grey,
+        color: Colors.grey[700],
         selectedColor: Theme.of(context).accentColor,
         notchedShape: CircularNotchedRectangle(),
         iconSize: 20.0,
@@ -77,72 +73,119 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           FABBottomAppBarItem(
               iconData: FontAwesomeIcons.comments, text: 'Messages'),
           FABBottomAppBarItem(
-              iconData: FontAwesomeIcons.userFriends, text: 'Services'),
+              iconData: FontAwesomeIcons.businessTime, text: 'Services'),
         ],
       ),
     );
   }
 
-  void _showModal() {
-    final List<NewPostModel> listModel = [
-      NewPostModel(
-          title: 'Create a Post',
-          subTitle: 'Share your thoughts with community',
-          iconData: FontAwesomeIcons.pen),
-      NewPostModel(
-          title: 'Ask a Question',
-          subTitle: 'Any doubts? As the community',
-          iconData: FontAwesomeIcons.info),
-      NewPostModel(
-          title: 'Start a Poll',
-          subTitle: 'Need the option of the many ?',
-          iconData: Icons.equalizer),
-      NewPostModel(
-          title: 'Organise an Event',
-          subTitle: 'Start meet with people to share your joys',
-          iconData: FontAwesomeIcons.calendar),
-    ];
-
-    Future<void> future = showModalBottomSheet<void>(
-      context: context, builder: (BuildContext context) {
-        return Container(
-            height: 350,
-            child: ListView.builder(
-                itemCount: listModel.length,
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: <Widget>[
-                      ListTile(
-                        onTap: () => print(listModel[index].title),
-                        title: Text(listModel[index].title,
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Theme.of(context).accentColor,
-                                letterSpacing: 1.2,
-                                fontWeight: FontWeight.bold)),
-                        leading: Container(
-                          padding: EdgeInsets.all(12),
-                          decoration: BoxDecoration(
-                            color: Colors.teal[100],
-                            borderRadius:BorderRadius.all(Radius.circular(45.0)),
-                          ),
-                          child: Icon(listModel[index].iconData, size: 15.0),
-                        ),
-                        subtitle: Text(listModel[index].subTitle),
-                        //contentPadding: EdgeInsets.all(12),
-                        trailing: Icon( CupertinoIcons.forward, color: Colors.grey[400],
-                        ),
-                      ),
-                      Divider(thickness: 2)
-                    ],
-                  );
-                }));
-      },
-    );
-    future.then((void value) => _closeModal(value));
+  _onCenterBottomFloatingPressed() {
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Container(
+            color: Color(0xFF737373),
+            child: _buildBottomNavMenu(),
+          );
+        });
   }
 
-  void _closeModal(void value) {
-    print('modal closed');
+
+  Widget divider(){
+    return Divider(
+      height: 1,
+      color: Colors.grey[500],
+    );
+  }
+
+
+  Widget _buildBottomNavMenu() {
+
+    return Container(
+      height: 300,
+      decoration: BoxDecoration(
+        color: Theme.of(context).canvasColor,
+        borderRadius: BorderRadius.only(
+          topLeft: const Radius.circular(20),
+          topRight: const Radius.circular(20),
+        ),
+      ),
+
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+
+          ListTile(
+            leading: Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(30)),
+                color: Colors.teal[200],
+              ),
+              child: Icon(Icons.colorize),
+            ), //Icon(FontAwesomeIcons.penFancy, size: 20),
+            title: Text('Create New Post'),
+            subtitle: Text('This is subtitle'),
+            onTap: () {
+              Navigator.pop(context);
+              debugPrint('Create New Post');
+            },
+          ),
+
+
+          ListTile(
+            leading: Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(30)),
+                color: Colors.teal[200],
+              ),
+              child: Icon(FontAwesomeIcons.info),
+            ), //Icon(FontAwesomeIcons.info),
+            title: Text('Ask A Question'),
+            subtitle: Text('Ask A Question'),
+            onTap: () {
+              Navigator.pop(context);
+              debugPrint('Create New Post');
+            },
+          ),
+
+
+          ListTile(
+            leading: Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(30)),
+                color: Colors.teal[200],
+              ),
+              child: Icon(Icons.poll),
+            ),
+            title: Text('Start A Poll'),
+            subtitle: Text('Start A Poll'),
+            onTap: () {
+              Navigator.pop(context);
+              debugPrint('Create New Post');
+            },
+          ),
+
+          ListTile(
+            leading: Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(30)),
+                color: Colors.teal[200],
+              ),
+              child: Icon(Icons.event),
+            ),
+            title: Text('Organise An Event'),
+            subtitle: Text('Organise An Event'),
+            onTap: () {
+              Navigator.pop(context);
+              debugPrint('Create New Post');
+            },
+          )
+        ],
+      ),
+    );
   }
 }

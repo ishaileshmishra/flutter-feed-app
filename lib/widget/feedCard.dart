@@ -5,7 +5,6 @@ import 'package:healthnest/postpage/postdetail_page.dart';
 import 'package:share/share.dart';
 
 Widget feedCard(BuildContext context, Feed listFeed) {
-
   return Card(
     child: GestureDetector(
       onTap: () => Navigator.push(
@@ -19,10 +18,12 @@ Widget feedCard(BuildContext context, Feed listFeed) {
               space10(),
               userAvatarSection(context, listFeed),
               space15(),
-              Text(listFeed.name, softWrap: true, maxLines: 2,style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              Text(listFeed.name,
+                  softWrap: true,
+                  maxLines: 2,
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
               space15(),
-              Text(listFeed.description,
-                  style: TextStyle(fontSize: 14, color: Colors.grey)),
+              Text(listFeed.description, style: TextStyle(fontSize: 14, color: Colors.grey)),
               space15(),
               setLocation(listFeed),
               Divider(thickness: 1),
@@ -32,8 +33,7 @@ Widget feedCard(BuildContext context, Feed listFeed) {
                   SizedBox(width: 10),
                   Text(
                     '${listFeed.members} Members have this questions',
-                    style: TextStyle(
-                        fontSize: 14, color: Theme.of(context).primaryColor),
+                    style: TextStyle(fontSize: 14, color: Theme.of(context).primaryColor),
                   ),
                 ],
               ),
@@ -108,30 +108,38 @@ Widget userAvatarSection(BuildContext context, Feed listFeed) {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Column(
+            Row(
               children: <Widget>[
-                Row(
+                CircleAvatar(
+                    backgroundColor: Colors.grey,
+                    child: ClipOval(child: Image.network(listFeed.avatarImg)),
+                    radius: 20),
+                SizedBox(width: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    //Person Avatar Image round shape
-                    CircleAvatar(
-                        backgroundColor: Colors.grey,
-                        child:
-                            ClipOval(child: Image.network(listFeed.avatarImg)),
-                        radius: 20),
-                    SizedBox(width: 10),
-                    Text(listFeed.title,
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.bold)),
-                    SizedBox(width: 8),
-                    Text(listFeed.category,
-                        style: TextStyle(fontSize: 14, color: Colors.grey))
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(listFeed.title,
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold)),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(listFeed.subcategory,
+                            softWrap: true,
+                            style: TextStyle(fontSize: 14, color: Colors.grey))
+                      ],
+                    ),
+                    SizedBox(height: 4),
+                    Text('DIAGNOSED RECENTALLY',
+                        style: TextStyle(fontSize: 9, color: Colors.teal)),
                   ],
-                ),
-                Text('DIAGNOSED RECENTALLY',
-                    style: TextStyle(fontSize: 9, color: Colors.teal)),
+                )
               ],
             ),
-            shareGesture(context),
+            moreOptions3Dots(context),
           ],
         ),
       )
@@ -139,10 +147,11 @@ Widget userAvatarSection(BuildContext context, Feed listFeed) {
   );
 }
 
-Widget shareGesture(BuildContext context) {
+Widget moreOptions3Dots(BuildContext context) {
   return GestureDetector(
     // Just For Demo, Doesn't Work As Needed
-    onTap: () => _showPopupMenu(context),
+    onTap: () =>
+        _onCenterBottomMenuOn3DotsPressed(context), //_showPopupMenu(context),
     child: Container(
       child: Icon(FontAwesomeIcons.ellipsisV, size: 18),
     ),
@@ -150,13 +159,11 @@ Widget shareGesture(BuildContext context) {
 }
 
 Widget space10() {
-  // Provides 10 Pixel height
   return SizedBox(height: 10);
 }
 
 Widget space15() {
-  // Provides 10 Pixel height
-  return SizedBox(height: 15);
+  return SizedBox(height: 10);
 }
 
 Widget renderCategoryTime(Feed listFeed) {
@@ -164,55 +171,89 @@ Widget renderCategoryTime(Feed listFeed) {
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: <Widget>[
       Text(listFeed.category,
-          style: TextStyle(fontSize: 14, color: Colors.grey)),
-      Text(listFeed.time, style: TextStyle(fontSize: 14, color: Colors.grey)),
+          style: TextStyle(fontSize: 14, color: Colors.grey[700])),
+      Text(listFeed.time,
+          style: TextStyle(fontSize: 14, color: Colors.grey[700])),
     ],
   );
 }
 
-_showPopupMenu(BuildContext context) async {
-  // Using await, instead can use direct list of widgets, It will be useful if the option will render from the cloud.
+_onCenterBottomMenuOn3DotsPressed(BuildContext context) {
+  //debugPrint('_buildBottomNavMenu');
+  showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          color: Color(0xFF737373),
+          child: _buildBottomNavMenu(context),
+        );
+      });
+}
 
-  await showMenu(
-    context: context,
-    position: RelativeRect.fromLTRB(100, 400, 100, 400),
-    items: [
-      PopupMenuItem(
-        child: ListTile(
+Widget _buildBottomNavMenu(BuildContext context) {
+  return Container(
+    height: 300,
+    decoration: BoxDecoration(
+      color: Theme.of(context).canvasColor,
+      borderRadius: BorderRadius.only(
+        topLeft: const Radius.circular(20),
+        topRight: const Radius.circular(20),
+      ),
+    ),
+    child: Column(
+      children: <Widget>[
+        ListTile(
           leading: Icon(FontAwesomeIcons.cross, size: 15),
-          onTap: () => print('hide'),
+          onTap: () {
+            print('hide');
+            Navigator.pop(context);
+          },
           title: Text('Hide <Post type>'),
           subtitle: Text('See fewer posts like this'),
         ),
-      ),
-      PopupMenuItem(
-        child: ListTile(
+        Divider(
+          height: 1,
+          color: Colors.grey[500],
+        ),
+        ListTile(
           leading: Icon(
             FontAwesomeIcons.solidEyeSlash,
             size: 15,
           ),
-          onTap: () => print('Unfollow <username>'),
+          onTap: () {
+            print('Unfollow <username>');
+            Navigator.pop(context);
+          },
           title: Text('Unfollow <username>'),
           subtitle: Text('See fewer posts like this'),
         ),
-      ),
-      PopupMenuItem(
-        child: ListTile(
+        Divider(
+          height: 1,
+          color: Colors.grey[500],
+        ),
+        ListTile(
           leading: Icon(Icons.report, size: 15),
-          onTap: () => print('Report'),
+          onTap: () {
+            print('Report');
+            Navigator.pop(context);
+          },
           title: Text('Report <Post type>'),
           subtitle: Text('See fewer posts like this'),
         ),
-      ),
-      PopupMenuItem(
-        child: ListTile(
+        Divider(
+          height: 1,
+          color: Colors.grey[500],
+        ),
+        ListTile(
           leading: Icon(Icons.link, size: 15),
-          onTap: () => print('hide'),
+          onTap: () {
+            debugPrint('Copy <Post type> link');
+            Navigator.pop(context);
+          },
           title: Text('Copy <Post type> link'),
           subtitle: Text('See fewer posts like this'),
         ),
-      ),
-    ],
-    elevation: 8.0,
+      ],
+    ),
   );
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:healthnest/categories/feed/category_list.dart';
 import 'package:healthnest/categories/feed/feedBloc.dart';
 import 'package:healthnest/categories/feed/feed_model.dart';
 import 'package:healthnest/categories/feed/widgetFeed.dart';
@@ -26,6 +27,31 @@ class _FeedPageState extends State<FeedPage> {
     super.dispose();
   }
 
+
+  Widget streamBuilderLayout() {
+    return StreamBuilder<List<Feed>>(
+      stream: feedBloc.feedListStream,
+      builder: (BuildContext context, AsyncSnapshot<List<Feed>> snapshot) {
+        return ListView.builder(
+            itemCount: snapshot.data.length,
+            itemBuilder: (context, index) {
+              if (!snapshot.hasData) {
+                return Center(
+                    child: Text('Feed Does not have data',
+                        style: TextStyle(fontSize: 20, color: Colors.red)));
+              } else if (snapshot.hasError) {
+                return Center(
+                    child: Text('Error While Fetching Feeds',
+                        style: TextStyle(fontSize: 20, color: Colors.red)));
+              } else {
+                return feedCard(context, snapshot.data[index]);
+              }
+            });
+      },
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,30 +64,11 @@ class _FeedPageState extends State<FeedPage> {
               topSpace(),
               searchTextField(),
               topSpace(),
-              horizontalCategories(),
+              Container(height: 55, child: CategoryList()),
               topSpace(),
-              // Expand Feed ListView In The Available space.
               Expanded(
                 child: Container(
-                  child: StreamBuilder<List<Feed>>(
-                    stream: feedBloc.feedListStream,
-                    builder: (BuildContext context, AsyncSnapshot<List<Feed>> snapshot) {
-                      return ListView.builder(
-                          itemCount: snapshot.data.length,
-                          itemBuilder: (context, index) {
-
-                            if (!snapshot.hasData){
-                              return CircularProgressIndicator();
-                            }
-                            if (snapshot.hasError){
-                              return Center(child: Text('Error while fetching feeds', style: TextStyle(fontSize: 20,color: Colors.red),));
-                            }
-
-                            return feedCard(context, snapshot.data[index]);
-
-                          });
-                    },
-                  ),
+                  child: streamBuilderLayout(),
                 ),
                 //child: FeedItemCard()
               ),
@@ -71,4 +78,6 @@ class _FeedPageState extends State<FeedPage> {
       ),
     );
   }
+
+
 }
