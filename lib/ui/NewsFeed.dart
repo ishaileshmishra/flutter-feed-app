@@ -7,14 +7,14 @@ import 'package:healthnest/ui/FeedLatestArticle.dart';
 import 'package:healthnest/widget/feedCard.dart';
 
 class NewsFeed extends StatefulWidget {
-
   @override
   _NewsFeedState createState() => _NewsFeedState();
-
 }
 
 class _NewsFeedState extends State<NewsFeed> {
+
   List<Feed> _feedList = [
+
     Feed(
         feedId: 1,
         type: 0,
@@ -55,7 +55,7 @@ class _NewsFeedState extends State<NewsFeed> {
         category: 'DIET',
         subcategory: 'Asked a question',
         time: '10 min',
-        name: 'CANCER MEET AT RAJEEV GANDHI NATIONAL PARK',
+        name: 'Cancer Meet At Rajiv Gandhi National Park',
         avatarImg: 'https://www.w3schools.com/w3images/avatar1.png',
         bannerImg: 'https://www.w3schools.com/w3images/avatar1.png',
         location: 'Peninsula park Andheri, Mumbai',
@@ -70,14 +70,13 @@ class _NewsFeedState extends State<NewsFeed> {
         category: 'LIFESTYLE',
         subcategory: 'Asked a question',
         time: '10 min',
-        name: 'SOMETHING TO MOTIVATE YOU',
+        name: 'Something To Motivate You',
         avatarImg: 'https://www.w3schools.com/w3images/avatar4.png',
         bannerImg: 'https://www.w3schools.com/w3images/avatar4.png',
         location: 'Peninsula park Andheri, Mumbai',
         likes: 25,
         comments: '24',
         members: '18'),
-
     Feed(
         feedId: 5,
         type: 0,
@@ -93,24 +92,35 @@ class _NewsFeedState extends State<NewsFeed> {
         likes: 25,
         comments: '24',
         members: '18'),
+
   ];
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(5.0),
       child: SingleChildScrollView(
         child: Container(
-          color: Colors.grey[200],
+          color: Colors.grey[300],
           child: SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                actionBarRow(),
-                topSpace(),
-                searchTextField(),
-                topSpace(),
-                Container(height: 55, child: CategoryList()),
+                Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: <Widget>[
+                        actionBarRow(),
+                        topSpace(),
+                        searchTextField(),
+                        topSpace(),
+                        Container(height: 55, child: CategoryList()),
+                      ],
+                    ),
+                  ),
+                ),
+
                 topSpace(),
 
                 // List section for the News Feed.
@@ -132,7 +142,6 @@ class _NewsFeedState extends State<NewsFeed> {
 
                 pollingCard(_feedList[4]),
                 feedNewsCardItem(_feedList[1]),
-
               ],
             ),
           ),
@@ -143,7 +152,7 @@ class _NewsFeedState extends State<NewsFeed> {
 
   Widget feedNewsCardItem(Feed feed) {
     return Card(
-      elevation: 5,
+      elevation: 0,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -190,7 +199,7 @@ class _NewsFeedState extends State<NewsFeed> {
 
   Widget feedNewsCardItemQuestion(Feed feed) {
     return Card(
-      elevation: 5,
+      elevation: 0,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -235,7 +244,7 @@ class _NewsFeedState extends State<NewsFeed> {
 
   Widget feedNewsCardWithImageItem(Feed feed) {
     return Card(
-      elevation: 5,
+      elevation: 0,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -250,15 +259,12 @@ class _NewsFeedState extends State<NewsFeed> {
                 maxLines: 2,
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
             space15(),
-            Text(feed.description,
-                style: TextStyle(fontSize: 14, color: Colors.blue)),
+            Text(feed.description, style: TextStyle(fontSize: 14, color: Colors.blue)),
             space15(),
-
             // show Image Preview
-            Image.network(feed.avatarImg,
-                fit: BoxFit.cover, height: 150, color: Colors.grey[400]),
-
+            Image.network(feed.avatarImg, fit: BoxFit.cover, height: 150, color: Colors.grey[400]),
             space15(),
+            // shows location
             setLocation(feed),
             Divider(thickness: 1),
             Row(
@@ -284,7 +290,7 @@ class _NewsFeedState extends State<NewsFeed> {
 
   Widget btnDecoration(String btnText) {
     return Container(
-        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(20)),
           color: Colors.teal,
@@ -332,11 +338,10 @@ class _NewsFeedState extends State<NewsFeed> {
   }
 
   Widget pollingCard(Feed feed) {
-
     return Card(
-      elevation: 5,
+      elevation: 0,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -349,12 +354,9 @@ class _NewsFeedState extends State<NewsFeed> {
                 child: Text(feed.name,
                     softWrap: true,
                     maxLines: 2,
-                    style:
-                    TextStyle(fontSize: 16, fontWeight: FontWeight.bold))),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold))),
             space15(),
-
             pollCartSection(),
-
             space15(),
             setLocation(feed),
             Divider(thickness: 1),
@@ -385,36 +387,33 @@ class _NewsFeedState extends State<NewsFeed> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            pollQuestion('Apollo Hospital, Banglore'), pollQuestion('20%'),
+            pollQuestion('Apollo Hospital, Banglore'),
+            pollQuestion('20%'),
           ],
         ),
-
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            pollQuestion('AIIMS Delhi'), pollQuestion('20%'),
+            pollQuestion('AIIMS Delhi'),
+            pollQuestion('20%'),
           ],
         ),
-
-
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            pollQuestion('Kokila Ben Dhirubhai Ambani, Mumbai'), pollQuestion('50%')
+            pollQuestion('Kokila Ben Dhirubhai Ambani, Mumbai'),
+            pollQuestion('50%')
           ],
         )
-
       ],
     );
   }
 
-
-  Widget pollQuestion(String question){
+  Widget pollQuestion(String question) {
     return Container(
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8))),
       child: Text(question),
     );
   }
-
 }

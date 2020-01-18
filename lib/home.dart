@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      backgroundColor: Colors.grey[300],
       body: _selectedTab(_selectedDrawerIndex),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         splashColor: Colors.teal,
         onPressed: _onCenterBottomFloatingPressed,
         child: Icon(CupertinoIcons.add),
-        elevation: 10,
+        elevation: 0,
       ),
 
       bottomNavigationBar: FABBottomAppBar(

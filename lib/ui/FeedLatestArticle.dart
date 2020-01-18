@@ -45,7 +45,7 @@ class _LatestArticleState extends State<LatestArticle> {
         itemCount: articleModel.length,
         itemBuilder: (context, index) {
           return Card(
-            elevation: 5,
+            elevation: 0,
             child: Container(
               height: 200,
               width: 300,
@@ -82,7 +82,7 @@ class _LatestArticleState extends State<LatestArticle> {
                     children: <Widget>[
                       Text('READ ARTICLE',
                           style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                               color: Colors.teal)),
                       Icon(
