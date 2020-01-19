@@ -4,8 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:healthnest/ui/newsFeedPage/widgets/feed_model.dart';
 import 'package:healthnest/widget/feedCard.dart';
 
-Widget actionBarRow() {
-  return Row(
+Widget actionBarRow() {return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: <Widget>[
@@ -38,8 +37,7 @@ Widget actionBarRow() {
           radius: 20,
           backgroundColor: Colors.grey)
     ],
-  );
-}
+  );}
 
 Widget searchTextField() {
   return Row(

@@ -13,9 +13,6 @@ import 'package:healthnest/ui/newsFeedPage/widgets/feed_model.dart';
 
 class FeedBloc {
 
-  static String _descriptionIsLong = "I have been facing a facing possible symptoms of skin cancer. "
-      "I have googled all possibilities but i thought i'd asked community instead...";
-
 //  List<Feed> _feedListModel = [
 //    Feed(
 //        feedId: 1,
