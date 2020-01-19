@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_country_picker/flutter_country_picker.dart';
-import 'package:healthnest/home.dart';
+import 'package:healthnest/ui/home.dart';
 
 class HealthNestLogin extends StatefulWidget {
   @override

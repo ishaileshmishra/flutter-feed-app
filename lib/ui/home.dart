@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:healthnest/categories/feed/feed.dart';
-import 'package:healthnest/categories/library/library.dart';
-import 'package:healthnest/categories/message/messages.dart';
-import 'package:healthnest/categories/services/services.dart';
-import 'package:healthnest/navigation/fab_bottom_app_bar.dart';
+import 'package:healthnest/custom/fab_bottom_app_bar.dart';
+import 'package:healthnest/ui/libraryPage/library.dart';
+import 'package:healthnest/ui/messagePage/messages.dart';
+import 'package:healthnest/ui/servicesPage/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:healthnest/ui/NewsFeed.dart';
+import 'package:healthnest/ui/newsFeedPage/NewsFeed.dart';
 
 class HomePage extends StatefulWidget {
   @override

@@ -9,7 +9,7 @@
 //Stream Is Already Been Cooked In Flutter
 
 import 'dart:async';
-import 'package:healthnest/categories/feed/feed_model.dart';
+import 'package:healthnest/ui/newsFeedPage/widgets/feed_model.dart';
 
 class FeedBloc {
 

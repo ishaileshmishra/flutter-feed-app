@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class LatestArticleModel {
-  String imageIcon;
-  String DrName;
-  String DrDescription;
 
-  LatestArticleModel({this.imageIcon, this.DrName, this.DrDescription});
+  String imageIcon;
+  String drName;
+  String drDescription;
+
+  LatestArticleModel({this.imageIcon, this.drName, this.drDescription});
 }
 
 class LatestArticle extends StatefulWidget {
@@ -23,18 +24,18 @@ class _LatestArticleState extends State<LatestArticle> {
 
     articleModel.add(LatestArticleModel(
         imageIcon: 'https://www.w3schools.com/w3images/avatar2.png',
-        DrName: 'Dr. Shukla',
-        DrDescription:
+        drName: 'Dr. Shukla',
+        drDescription:
             'Generic testing plays an important role in preventing the cancer orem ipsum...'));
     articleModel.add(LatestArticleModel(
         imageIcon: 'https://www.w3schools.com/w3images/avatar3.png',
-        DrName: 'Dr. Mishra',
-        DrDescription:
+        drName: 'Dr. Mishra',
+        drDescription:
             'Generic testing plays an important role in preventing the cancer orem ipsum...'));
     articleModel.add(LatestArticleModel(
         imageIcon: 'https://www.w3schools.com/w3images/avatar5.png',
-        DrName: 'Dr. Tripathi',
-        DrDescription:
+        drName: 'Dr. Tripathi',
+        drDescription:
             'Generic testing plays an important role in preventing the cancer orem ipsum...'));
   }
 
@@ -65,12 +66,12 @@ class _LatestArticleState extends State<LatestArticle> {
                                   Image.network(articleModel[index].imageIcon)),
                           radius: 20),
                       SizedBox(width: 10),
-                      Text(articleModel[index].DrName,
+                      Text(articleModel[index].drName,
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold))
                     ],
                   ),
-                  Text(articleModel[index].DrDescription,
+                  Text(articleModel[index].drDescription,
                       maxLines: 3, style: TextStyle(fontSize: 15)),
                   Divider(
                     height: 1,

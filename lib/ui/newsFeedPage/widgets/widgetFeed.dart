@@ -70,11 +70,11 @@ Widget searchTextField() {
 
 // This helps to build the hosrizontal list of the category items
 
-
 BoxDecoration boxDecoration() {
   return BoxDecoration(
       borderRadius: BorderRadius.all(Radius.circular(30)),
-      border: Border.all(width: 1, style: BorderStyle.solid, color: Colors.teal));
+      border:
+          Border.all(width: 1, style: BorderStyle.solid, color: Colors.teal));
 }
 
 BoxDecoration selectedBoxDecoration() {

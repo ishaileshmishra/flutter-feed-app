@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:healthnest/categories/feed/feed_model.dart';
+import 'package:healthnest/ui/newsFeedPage/widgets/feed_model.dart';
 import 'package:healthnest/postpage/postdetail_page.dart';
 import 'package:share/share.dart';
 

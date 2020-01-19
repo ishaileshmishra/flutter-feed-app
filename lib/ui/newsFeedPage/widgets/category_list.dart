@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:healthnest/categories/feed/widgetFeed.dart';
+import 'package:healthnest/ui/newsFeedPage/widgets/widgetFeed.dart';
 
 class CategoryList extends StatefulWidget {
 
@@ -20,20 +20,6 @@ class _CategoryListState extends State<CategoryList> {
     'Entertainment',
     'Love'
   ];
-
-
-//  BoxDecoration boxDecoration() {
-//    return BoxDecoration(
-//        borderRadius: BorderRadius.all(Radius.circular(30)),
-//        border: Border.all(width: 1, style: BorderStyle.solid, color: Colors.teal));
-//  }
-//
-//  BoxDecoration selectedBoxDecoration() {
-//    return BoxDecoration(
-//        borderRadius: BorderRadius.all(Radius.circular(30)),
-//        color: Colors.teal[200],
-//        border: Border.all(width: 1, style: BorderStyle.solid, color: Colors.teal));
-//  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,4 +46,6 @@ class _CategoryListState extends State<CategoryList> {
           }),
     );
   }
+
+
 }
