@@ -10,6 +10,7 @@ class NewsFeed extends StatefulWidget {
 }
 
 class _NewsFeedState extends State<NewsFeed> {
+
   @override
   Widget build(BuildContext context) {
     return Padding(
