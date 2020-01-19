@@ -9,11 +9,13 @@ class HealthNestLogin extends StatefulWidget {
 }
 
 class _HealthNestLoginState extends State<HealthNestLogin> {
+
   Country _selectedCountry;
   final controller = TextEditingController();
   GlobalKey<FormState> _key = new GlobalKey();
   bool _validate = false;
   String consumerMobileNumber;
+  Color color = Colors.grey;
 
   @override
   void initState() {
@@ -26,10 +28,12 @@ class _HealthNestLoginState extends State<HealthNestLogin> {
     return Form(
       key: _key,
       autovalidate: _validate,
-      child: formUI(),
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: formUI(),
+      )//formUI(),
     );
   }
-
 
   Widget formUI() {
     return GestureDetector(
@@ -37,34 +41,27 @@ class _HealthNestLoginState extends State<HealthNestLogin> {
       child: Scaffold(
         body: SingleChildScrollView(
           child: Container(
-            padding: const EdgeInsets.only(top: 100.0, left: 16, right: 16, bottom: 16),
+            padding: const EdgeInsets.only(top: 180, left: 20, right: 20),
+
             child: SafeArea(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   appIcon(),
                   SizedBox(height: 20),
-                  Container(
-                    //alignment: Alignment.bottomLeft,
-
-                    child: const Text('Welcome to\nHealthNest',
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontStyle: FontStyle.normal,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
+                  welcomeText(),
                   SizedBox(height: 20),
                   editTextWithCountryCode(),
-                  SizedBox(height: 30),
+                  SizedBox(height: 20),
                   textDescription(),
-                  SizedBox(height: 30),
+                  SizedBox(height: 20),
                   sendOTPButtonWidget(),
                 ],
               ),
             ),
           ),
-      ),
+        ),
       ),
     );
   }
@@ -102,12 +99,11 @@ class _HealthNestLoginState extends State<HealthNestLogin> {
   Widget sendOTPButtonWidget() {
     return Container(
       width: double.infinity,
-      height: 40,
+      height: 45,
       child: RaisedButton(
-        //onPressed: _isButtonDisabled ? null : () {_sendToServer();},
+        color: color,
         onPressed: _sendToServer,
-        child: Text('Send OTP',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+        child: Text('Send OTP', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
         //color: Theme.of(context).accentColor,
         elevation: 5,
       ),
@@ -148,12 +144,22 @@ class _HealthNestLoginState extends State<HealthNestLogin> {
           child: TextFormField(
             maxLength: 10,
             keyboardType: TextInputType.number,
+            onChanged: (String newVal) {
+              setState(() {
+                if(newVal.length==10){
+                  color = Colors.teal;
+                }else{
+                  color = Colors.grey;
+                }
+              });
+            },
             decoration: InputDecoration(
                 labelText: 'Enter phone number',
                 suffixIcon: Icon(CupertinoIcons.phone)),
             validator: _validateMobile,
             controller: controller,
             onSaved: (String phoneNumber) {
+              debugPrint('find the input length ${phoneNumber.length}');
               consumerMobileNumber = phoneNumber;
             },
           ),
@@ -167,5 +173,17 @@ class _HealthNestLoginState extends State<HealthNestLogin> {
         alignment: Alignment.topLeft,
         child: Image.asset('assets/img/doctor.png',
             width: 80, height: 80, color: Colors.teal));
+  }
+
+  Widget welcomeText() {
+    return Container(
+      child: const Text(
+        'Welcome to\nHealthNest',
+        style: TextStyle(
+            fontSize: 30,
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.bold),
+      ),
+    );
   }
 }

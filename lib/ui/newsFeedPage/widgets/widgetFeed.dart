@@ -200,16 +200,7 @@ Widget feedNewsCardWithImageItem(BuildContext context,Feed feed) {
           space15(),
           // show Image Preview
 
-          Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/img/running_girl.jpeg')
-                ),
-              ),
-              child: Image(
-                  image: new AssetImage('assets/img/running_girl.jpeg'),
-                  fit: BoxFit.cover)//Image.asset('assets/img/running_girl.jpeg', fit: BoxFit.cover, height: 180, width: 600),
-          ),
+          Image.asset('assets/img/running_girl.jpeg', fit: BoxFit.cover, height: 180, width: double.infinity),
 
           space15(),
           // shows location
