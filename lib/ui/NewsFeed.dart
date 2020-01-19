@@ -12,9 +12,7 @@ class NewsFeed extends StatefulWidget {
 }
 
 class _NewsFeedState extends State<NewsFeed> {
-
   List<Feed> _feedList = [
-
     Feed(
         feedId: 1,
         type: 0,
@@ -92,7 +90,6 @@ class _NewsFeedState extends State<NewsFeed> {
         likes: 25,
         comments: '24',
         members: '18'),
-
   ];
 
   @override
@@ -103,6 +100,7 @@ class _NewsFeedState extends State<NewsFeed> {
         child: Container(
           color: Colors.grey[300],
           child: SafeArea(
+
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -131,7 +129,9 @@ class _NewsFeedState extends State<NewsFeed> {
                 SizedBox(height: 20),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Text('LATEST ARTICLE', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  child: Text('LATEST ARTICLE',
+                      style:
+                      TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                 ),
                 topSpace(),
                 Container(
@@ -144,6 +144,8 @@ class _NewsFeedState extends State<NewsFeed> {
                 feedNewsCardItem(_feedList[1]),
               ],
             ),
+
+
           ),
         ),
       ),
@@ -259,10 +261,22 @@ class _NewsFeedState extends State<NewsFeed> {
                 maxLines: 2,
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
             space15(),
-            Text(feed.description, style: TextStyle(fontSize: 14, color: Colors.blue)),
+            Text(feed.description,
+                style: TextStyle(fontSize: 14, color: Colors.blue)),
             space15(),
             // show Image Preview
-            Image.network(feed.avatarImg, fit: BoxFit.cover, height: 150, color: Colors.grey[400]),
+
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/img/running_girl.jpeg')
+                ),
+              ),
+              child: Image(
+                  image: new AssetImage('assets/img/running_girl.jpeg'),
+                  fit: BoxFit.cover)//Image.asset('assets/img/running_girl.jpeg', fit: BoxFit.cover, height: 180, width: 600),
+            ),
+
             space15(),
             // shows location
             setLocation(feed),
@@ -354,7 +368,8 @@ class _NewsFeedState extends State<NewsFeed> {
                 child: Text(feed.name,
                     softWrap: true,
                     maxLines: 2,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold))),
+                    style:
+                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold))),
             space15(),
             pollCartSection(),
             space15(),
@@ -412,7 +427,8 @@ class _NewsFeedState extends State<NewsFeed> {
   Widget pollQuestion(String question) {
     return Container(
       padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8))),
+      decoration:
+          BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8))),
       child: Text(question),
     );
   }
