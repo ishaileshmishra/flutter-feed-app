@@ -6,6 +6,7 @@ import 'package:healthnest/ui/newsFeedPage/widgets/widgetFeed.dart';
 import 'package:healthnest/ui/newsFeedPage/FeedLatestArticle.dart';
 
 class NewsFeed extends StatefulWidget {
+
   @override
   _NewsFeedState createState() => _NewsFeedState();
 }

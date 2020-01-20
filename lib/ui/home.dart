@@ -13,8 +13,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
-
   int _selectedDrawerIndex = 0;
+  List<MenuModel> bottomMenuItems = new List<MenuModel>();
 
   _selectedTab(int pos) {
     setState(() {
@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
     switch (pos) {
       case 0:
-        return NewsFeed();//FeedPage();
+        return NewsFeed();
       case 1:
         return LibraryPage();
       case 2:
@@ -43,6 +43,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _selectedTab(_selectedDrawerIndex);
+
+    bottomMenuItems.add(new MenuModel('Create a post',
+        'share your thoughts with the community', Icons.colorize));
+    bottomMenuItems.add(new MenuModel(
+        'Ask a Question', 'Any doubts? As the community', Icons.info));
+    bottomMenuItems.add(new MenuModel(
+        'Start a Poll', 'Need the opiniun of the many', Icons.poll));
+    bottomMenuItems.add(new MenuModel('Organise an Event',
+        'Start a meet with people to share your joys', Icons.event));
   }
 
   @override
@@ -51,7 +60,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       backgroundColor: Colors.white,
       body: _selectedTab(_selectedDrawerIndex),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-
       floatingActionButton: FloatingActionButton(
         tooltip: 'Create Post',
         splashColor: Colors.teal,
@@ -59,7 +67,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         child: Icon(CupertinoIcons.add),
         elevation: 0,
       ),
-
       bottomNavigationBar: FABBottomAppBar(
         color: Colors.grey[700],
         selectedColor: Theme.of(context).accentColor,
@@ -84,110 +91,56 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         builder: (context) {
           return Container(
             color: Color(0xFF737373),
-            child: _buildBottomNavMenu(),
+            child: menuBottomSheet(),
           );
         });
   }
 
-
-  Widget divider(){
+  Widget divider() {
     return Divider(
       height: 1,
       color: Colors.grey[500],
     );
   }
 
+  Widget menuBottomSheet() {
 
-  Widget _buildBottomNavMenu() {
-
-    return Container(
-      height: 300,
+    return Container(height: 300,
+      margin: EdgeInsets.only(left: 10, right: 10, bottom: 50),
       decoration: BoxDecoration(
         color: Theme.of(context).canvasColor,
-        borderRadius: BorderRadius.only(
-          topLeft: const Radius.circular(20),
-          topRight: const Radius.circular(20),
-        ),
+        borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
 
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-
-          ListTile(
-            leading: Container(
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(30)),
-                color: Colors.teal[200],
+      child: ListView.builder(
+          itemCount: bottomMenuItems.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: Container(
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  color: Colors.teal[100],
+                ),
+                child: Icon(bottomMenuItems[index].icon, color: Colors.teal,),
               ),
-              child: Icon(Icons.colorize),
-            ), //Icon(FontAwesomeIcons.penFancy, size: 20),
-            title: Text('Create New Post'),
-            subtitle: Text('This is subtitle'),
-            onTap: () {
-              Navigator.pop(context);
-              debugPrint('Create New Post');
-            },
-          ),
-
-
-          ListTile(
-            leading: Container(
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(30)),
-                color: Colors.teal[200],
-              ),
-              child: Icon(FontAwesomeIcons.info),
-            ), //Icon(FontAwesomeIcons.info),
-            title: Text('Ask A Question'),
-            subtitle: Text('Ask A Question'),
-            onTap: () {
-              Navigator.pop(context);
-              debugPrint('Create New Post');
-            },
-          ),
-
-
-          ListTile(
-            leading: Container(
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(30)),
-                color: Colors.teal[200],
-              ),
-              child: Icon(Icons.poll),
-            ),
-            title: Text('Start A Poll'),
-            subtitle: Text('Start A Poll'),
-            onTap: () {
-              Navigator.pop(context);
-              debugPrint('Create New Post');
-            },
-          ),
-
-          ListTile(
-            leading: Container(
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(30)),
-                color: Colors.teal[200],
-              ),
-              child: Icon(Icons.event),
-            ),
-            title: Text('Organise An Event'),
-            subtitle: Text('Organise An Event'),
-            onTap: () {
-              Navigator.pop(context);
-              debugPrint('Create New Post');
-            },
-          )
-        ],
-      ),
-
-
-
+              title: Text(bottomMenuItems[index].title, style: TextStyle( color: Colors.teal, fontSize: 18),),
+              subtitle: Text(bottomMenuItems[index].subtitle),
+              onTap: () {
+                Navigator.pop(context);
+                debugPrint(bottomMenuItems[index].title);
+              },
+            );
+          }),
     );
   }
+
+}
+
+class MenuModel {
+  String title;
+  String subtitle;
+  IconData icon;
+
+  MenuModel(this.title, this.subtitle, this.icon);
 }
