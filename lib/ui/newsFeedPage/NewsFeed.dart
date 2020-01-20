@@ -14,17 +14,29 @@ class _NewsFeedState extends State<NewsFeed> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: actionBarRow(),
+        centerTitle: false,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+      ),
       body: SafeArea(
         top: true,
         bottom: true,
         child: Column(
           children: <Widget>[
-
             Container(
-              padding: EdgeInsets.all(10),
-              child: actionBarRow(),
+              margin: EdgeInsets.all(10),
+              child: Column(
+                children: <Widget>[
+                  topSpace(),
+                  searchTextField(),
+                  topSpace(),
+                  Container(height: 55, child: CategoryList()),
+                ],
+              ),
             ),
-
             Expanded(
               child: Container(
                 color: Colors.white,
@@ -33,29 +45,6 @@ class _NewsFeedState extends State<NewsFeed> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                            border: Border.all(
-                                style: BorderStyle.solid,
-                                color: Colors.grey,
-                                width: 0.5)),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: <Widget>[
-
-                              topSpace(),
-                              searchTextField(),
-                              topSpace(),
-                              Container(height: 55, child: CategoryList()),
-                            ],
-                          ),
-                        ),
-                      ),
-
-                      topSpace(),
-
                       // List section for the News Feed.
                       GestureDetector(
                         onTap: viewDetailPage,
