@@ -134,7 +134,7 @@ Widget userAvatarSection(BuildContext context, Feed listFeed) {
                     ),
                     SizedBox(height: 4),
                     Text('DIAGNOSED RECENTALLY',
-                        style: TextStyle(fontSize: 9, color: Colors.teal)),
+                        style: TextStyle(fontSize: 12, color: Colors.teal)),
                   ],
                 )
               ],

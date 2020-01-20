@@ -45,56 +45,63 @@ class _LatestArticleState extends State<LatestArticle> {
         scrollDirection: Axis.horizontal,
         itemCount: articleModel.length,
         itemBuilder: (context, index) {
-          return Card(
-            elevation: 0,
-            child: Container(
-              height: 200,
-              width: 300,
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(8))),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      CircleAvatar(
-                          backgroundColor: Colors.grey,
-                          child: ClipOval(
-                              child:
-                                  Image.network(articleModel[index].imageIcon)),
-                          radius: 20),
-                      SizedBox(width: 10),
-                      Text(articleModel[index].drName,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold))
-                    ],
-                  ),
-                  Text(articleModel[index].drDescription,
-                      maxLines: 3, style: TextStyle(fontSize: 15)),
-                  Divider(
-                    height: 1,
-                    color: Colors.blue,
-                  ),
+          return Container(
+            margin: EdgeInsets.only(left: 20),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                border: Border.all(style: BorderStyle.solid, color: Colors.grey, width: 0.5)
+            ),
+            child: Card(
+              elevation: 0,
+              child: Container(
+                height: 200,
+                width: 300,
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(8))),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        CircleAvatar(
+                            backgroundColor: Colors.grey,
+                            child: ClipOval(
+                                child:
+                                    Image.network(articleModel[index].imageIcon)),
+                            radius: 20),
+                        SizedBox(width: 10),
+                        Text(articleModel[index].drName,
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold))
+                      ],
+                    ),
+                    Text(articleModel[index].drDescription,
+                        maxLines: 3, style: TextStyle(fontSize: 15)),
+                    Divider(
+                      height: 1,
+                      color: Colors.blue,
+                    ),
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text('READ ARTICLE',
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.teal)),
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        size: 15,
-                        color: Colors.teal,
-                      )
-                    ],
-                  ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text('READ ARTICLE',
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.teal)),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          size: 15,
+                          color: Colors.teal,
+                        )
+                      ],
+                    ),
 
-                ],
+                  ],
+                ),
               ),
             ),
           );
