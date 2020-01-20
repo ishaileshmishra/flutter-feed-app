@@ -11,28 +11,25 @@ class NewsFeed extends StatefulWidget {
 }
 
 class _NewsFeedState extends State<NewsFeed> {
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.white,
-
-//      appBar: AppBar(
-//        title: actionBarRow(),
-//        centerTitle: false,
-//        elevation: 0,
-//        automaticallyImplyLeading: false,
-//        backgroundColor: Colors.white,
-//      ),
-
+      appBar: AppBar(
+        title: actionBarRow(),
+        centerTitle: false,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+      ),
 
       body: SafeArea(
-        //top: true,
-        //bottom: true,
         child: Column(
           children: <Widget>[
             Container(
               margin: EdgeInsets.all(10),
-
               child: Column(
                 children: <Widget>[
                   topSpace(),
@@ -41,13 +38,14 @@ class _NewsFeedState extends State<NewsFeed> {
                   Container(height: 55, child: CategoryList()),
                 ],
               ),
-
             ),
             Expanded(
               child: Container(
                 color: Colors.white,
                 padding: EdgeInsets.symmetric(horizontal: 10),
+
                 child: SingleChildScrollView(
+
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -100,8 +98,7 @@ class _NewsFeedState extends State<NewsFeed> {
                       topSpace(),
                       GestureDetector(
                         onTap: viewDetailPage,
-                        child:
-                            feedNewsCardItem(context, FeedBloc().feedList[1]),
+                        child: feedNewsCardItem(context, FeedBloc().feedList[1]),
                       ),
                     ],
                   ),
