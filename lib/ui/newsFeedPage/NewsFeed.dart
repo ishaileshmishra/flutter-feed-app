@@ -14,13 +14,17 @@ class _NewsFeedState extends State<NewsFeed> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: actionBarRow(),
-        centerTitle: false,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
-      ),
+      backgroundColor: Colors.white,
+
+//      appBar: AppBar(
+//        title: actionBarRow(),
+//        centerTitle: false,
+//        elevation: 0,
+//        automaticallyImplyLeading: false,
+//        backgroundColor: Colors.white,
+//      ),
+
+
       body: SafeArea(
         //top: true,
         //bottom: true,
