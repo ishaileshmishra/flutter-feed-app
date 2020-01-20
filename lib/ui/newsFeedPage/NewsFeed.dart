@@ -19,6 +19,12 @@ class _NewsFeedState extends State<NewsFeed> {
         bottom: true,
         child: Column(
           children: <Widget>[
+
+            Container(
+              padding: EdgeInsets.all(10),
+              child: actionBarRow(),
+            ),
+
             Expanded(
               child: Container(
                 color: Colors.white,
@@ -38,7 +44,7 @@ class _NewsFeedState extends State<NewsFeed> {
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
                             children: <Widget>[
-                              actionBarRow(),
+
                               topSpace(),
                               searchTextField(),
                               topSpace(),
