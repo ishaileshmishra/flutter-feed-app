@@ -12,21 +12,7 @@
 
   Screenshots:
   
-  <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/login1.png' width='250' height='510'/> 
-  .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/login2.png' width='250' height='510'/> 
-  .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/login3.png' width='250' height='510'/> 
-  .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/news_1.png' width='250' height='510'/>  
-  .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/news_2.png' width='250' height='510'/>  
-  .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/news_3.png' width='250' height='510'/> 
-  .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/news_4.png' width='250' height='510'/>
-  .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/news_5.png' width='250' height='510'/>  
-  .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/other_options.png' width='250' height='510'/> 
-  .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/post1.png' width='250' height='510'/> 
-  .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/post2.png' width='250' height='510'/> 
-  .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/post3.png' width='250' height='510'/> 
-  .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/post4.png' width='250' height='510'/> 
-  .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/post5.png' width='250' height='510'/> 
-  .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/share.png' width='250' height='510'/> 
+  <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/login1.png' width='250' height='510'/> .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/login2.png' width='250' height='510'/> .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/login3.png' width='250' height='510'/> .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/news_1.png' width='250' height='510'/>  .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/news_2.png' width='250' height='510'/>  .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/news_3.png' width='250' height='510'/> .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/news_4.png' width='250' height='510'/> .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/news_5.png' width='250' height='510'/>  .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/other_options.png' width='250' height='510'/> .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/post1.png' width='250' height='510'/> .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/post2.png' width='250' height='510'/> .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/post3.png' width='250' height='510'/> .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/post4.png' width='250' height='510'/> .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/post5.png' width='250' height='510'/> .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/share.png' width='250' height='510'/> 
 
 
   
