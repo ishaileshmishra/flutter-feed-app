@@ -28,8 +28,8 @@
   .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/3dots.png' width='250' height='510'/>
   .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/add_more.png' width='250' height='510'/>
   .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/share.png' width='250' height='510'/>
-  .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/post.png' width='250' height='510'/>
   .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/post_details.png' width='250' height='510'/>
+  .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/post.png' width='250' height='510'/>
   .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/post_scrolled.png' width='250' height='510'/>
   .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/post_textfield.png' width='250' height='510'/>
   .. <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/focused_text_field.png' width='250' height='510'/>
