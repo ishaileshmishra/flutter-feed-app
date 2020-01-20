@@ -6,6 +6,8 @@
   ## Getting Started
 
   This project is a starting point for a Flutter application.
+  
+  <img src='https://github.com/ishaileshmishra/healthnest/blob/master/screenshots/gif.gif' width='250' height='510'/>
 
 
   Screenshots:
