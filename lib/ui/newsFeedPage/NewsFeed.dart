@@ -22,12 +22,13 @@ class _NewsFeedState extends State<NewsFeed> {
         backgroundColor: Colors.white,
       ),
       body: SafeArea(
-        top: true,
-        bottom: true,
+        //top: true,
+        //bottom: true,
         child: Column(
           children: <Widget>[
             Container(
               margin: EdgeInsets.all(10),
+
               child: Column(
                 children: <Widget>[
                   topSpace(),
@@ -36,6 +37,7 @@ class _NewsFeedState extends State<NewsFeed> {
                   Container(height: 55, child: CategoryList()),
                 ],
               ),
+
             ),
             Expanded(
               child: Container(
