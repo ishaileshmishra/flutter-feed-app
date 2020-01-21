@@ -31,7 +31,7 @@ class _HealthNestLoginState extends State<HealthNestLogin> {
       child: Align(
         alignment: Alignment.bottomCenter,
         child: formUI(),
-      )//formUI(),
+      )
     );
   }
 
@@ -142,6 +142,7 @@ class _HealthNestLoginState extends State<HealthNestLogin> {
         Expanded(
           flex: 2,
           child: TextFormField(
+
             maxLength: 10,
             keyboardType: TextInputType.number,
             onChanged: (String newVal) {

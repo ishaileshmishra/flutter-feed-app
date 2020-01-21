@@ -179,7 +179,7 @@ Widget renderCategoryTime(Feed listFeed) {
 }
 
 _onCenterBottomMenuOn3DotsPressed(BuildContext context) {
-  //debugPrint('_buildBottomNavMenu');
+
   showModalBottomSheet(
       context: context,
       builder: (context) {
@@ -191,69 +191,47 @@ _onCenterBottomMenuOn3DotsPressed(BuildContext context) {
 }
 
 Widget _buildBottomNavMenu(BuildContext context) {
+
+  List<Menu3DotsModel> listMore = [];
+  listMore.add(Menu3DotsModel('Hide <Post type>', 'See fewer posts like this', Icons.block));
+  listMore.add(Menu3DotsModel('Unfollow <username>', 'See fewer posts like this', Icons.person_add));
+  listMore.add(Menu3DotsModel('Report <Post type>', 'See fewer posts like this', Icons.info));
+  listMore.add(Menu3DotsModel('Copy <Post type> link', 'See fewer posts like this', Icons.insert_link));
+
+
   return Container(
     height: 300,
     decoration: BoxDecoration(
       color: Theme.of(context).canvasColor,
       borderRadius: BorderRadius.only(
-        topLeft: const Radius.circular(20),
-        topRight: const Radius.circular(20),
+        topLeft: const Radius.circular(10),
+        topRight: const Radius.circular(10),
       ),
     ),
-    child: Column(
-      children: <Widget>[
-        ListTile(
-          leading: Icon(FontAwesomeIcons.cross, size: 15),
-          onTap: () {
-            print('hide');
-            Navigator.pop(context);
-          },
-          title: Text('Hide <Post type>'),
-          subtitle: Text('See fewer posts like this'),
-        ),
-        Divider(
-          height: 1,
-          color: Colors.grey[500],
-        ),
-        ListTile(
-          leading: Icon(
-            FontAwesomeIcons.solidEyeSlash,
-            size: 15,
-          ),
-          onTap: () {
-            print('Unfollow <username>');
-            Navigator.pop(context);
-          },
-          title: Text('Unfollow <username>'),
-          subtitle: Text('See fewer posts like this'),
-        ),
-        Divider(
-          height: 1,
-          color: Colors.grey[500],
-        ),
-        ListTile(
-          leading: Icon(Icons.report, size: 15),
-          onTap: () {
-            print('Report');
-            Navigator.pop(context);
-          },
-          title: Text('Report <Post type>'),
-          subtitle: Text('See fewer posts like this'),
-        ),
-        Divider(
-          height: 1,
-          color: Colors.grey[500],
-        ),
-        ListTile(
-          leading: Icon(Icons.link, size: 15),
-          onTap: () {
-            debugPrint('Copy <Post type> link');
-            Navigator.pop(context);
-          },
-          title: Text('Copy <Post type> link'),
-          subtitle: Text('See fewer posts like this'),
-        ),
-      ],
-    ),
+
+      child: ListView.builder(
+        itemCount: listMore.length,
+          itemBuilder: (BuildContext context, int index){
+        return ListTile(
+          title: Text(listMore[index].title, style: TextStyle(fontSize: 18),),
+          subtitle: Text(listMore[index].subtitle),
+          leading: Icon(listMore[index].icons, size: 20, color: Colors.teal,),
+        );
+      })
+
+
   );
+}
+
+
+
+class Menu3DotsModel{
+
+  String title;
+  String subtitle;
+  IconData icons;
+
+  Menu3DotsModel(this.title, this.subtitle, this.icons);
+
+
 }
