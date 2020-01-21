@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:healthnest/ui/newsFeedPage/widgets/ThumsUpReactions.dart';
 import 'package:healthnest/ui/newsFeedPage/widgets/feedBloc.dart';
 import 'package:healthnest/postpage/postdetail_page.dart';
 import 'package:share/share.dart';
@@ -47,13 +48,22 @@ Widget feedCard(BuildContext context, Feed listFeed) {
   );
 }
 
+
+
+
+
+
 Widget likeCommentShare(Feed listFeed) {
+
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceAround,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: <Widget>[
       GestureDetector(
-          onTap: () => debugPrint('${listFeed.likes} tapped'),
+          onTap: () {
+            print('FB Reactions Tapped');
+            FbReactionBox();
+          },
           child: Row(
             children: <Widget>[
               Icon(
@@ -87,6 +97,12 @@ Widget likeCommentShare(Feed listFeed) {
     ],
   );
 }
+
+
+
+
+
+
 
 Widget setLocation(Feed listFeed) {
   return Row(
@@ -224,7 +240,6 @@ Widget _buildBottomNavMenu(BuildContext context) {
 }
 
 
-
 class Menu3DotsModel{
 
   String title;
@@ -232,6 +247,5 @@ class Menu3DotsModel{
   IconData icons;
 
   Menu3DotsModel(this.title, this.subtitle, this.icons);
-
 
 }
