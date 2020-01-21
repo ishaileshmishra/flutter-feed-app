@@ -42,14 +42,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _selectedTab(_selectedDrawerIndex);
 
+    _selectedTab(_selectedDrawerIndex);
     bottomMenuItems.add(new MenuModel('Create a post',
         'share your thoughts with the community', Icons.colorize));
     bottomMenuItems.add(new MenuModel(
         'Ask a Question', 'Any doubts? As the community', Icons.info));
     bottomMenuItems.add(new MenuModel(
-        'Start a Poll', 'Need the opiniun of the many', Icons.poll));
+        'Start a Poll', 'Need the opiniun of the many', Icons.equalizer));
     bottomMenuItems.add(new MenuModel('Organise an Event',
         'Start a meet with people to share your joys', Icons.event));
   }
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       floatingActionButton: FloatingActionButton(
         tooltip: 'Create Post',
         splashColor: Colors.teal,
-        onPressed: _onCenterBottomFloatingPressed,
+        onPressed: _modalBottomSheetMenu,
         child: Icon(CupertinoIcons.add),
         elevation: 0,
       ),
@@ -85,56 +85,71 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
-  _onCenterBottomFloatingPressed() {
+  _modalBottomSheetMenu() {
     showModalBottomSheet(
         context: context,
-        builder: (context) {
+        builder: (BuildContext context) {
           return Container(
+            height: 440.0,
             color: Color(0xFF737373),
-            child: menuBottomSheet(),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: 300.0,
+                  margin: EdgeInsets.symmetric(horizontal: 15),
+                  decoration: new BoxDecoration(
+                      color: Colors.white, //Color(0xFF737373),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                  child: ListView.builder(
+                      itemCount: bottomMenuItems.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          leading: Container(
+                            padding: EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30)),
+                              color: Colors.teal[100],
+                            ),
+                            child: Icon(
+                              bottomMenuItems[index].icon,
+                              color: Colors.teal,
+                            ),
+                          ),
+                          trailing: Icon(
+                            Icons.arrow_forward_ios,
+                            size: 15,
+                          ),
+                          title: Text(
+                            bottomMenuItems[index].title,
+                            style: TextStyle(color: Colors.teal, fontSize: 18),
+                          ),
+                          subtitle: Text(bottomMenuItems[index].subtitle),
+                          onTap: () {
+                            Navigator.pop(context);
+                            debugPrint(bottomMenuItems[index].title);
+                          },
+                        );
+                      }),
+                ),
+
+                //SizedBox(height: 10),
+
+                Container(
+                    height: 60, width: 60,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(30))),
+                    margin: EdgeInsets.symmetric(vertical: 30),
+                    child: GestureDetector(
+                        onTap: () => Navigator.pop(context),
+                        child: Icon(Icons.close,
+                            size: 25, color: Colors.grey[900]))),
+              ],
+            ),
           );
         });
   }
-
-  Widget divider() {
-    return Divider(
-      height: 1,
-      color: Colors.grey[500],
-    );
-  }
-
-  Widget menuBottomSheet() {
-
-    return Container(height: 300,
-      margin: EdgeInsets.only(left: 10, right: 10, bottom: 50),
-      decoration: BoxDecoration(
-        color: Theme.of(context).canvasColor,
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-      ),
-
-      child: ListView.builder(
-          itemCount: bottomMenuItems.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              leading: Container(
-                padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
-                  color: Colors.teal[100],
-                ),
-                child: Icon(bottomMenuItems[index].icon, color: Colors.teal,),
-              ),
-              title: Text(bottomMenuItems[index].title, style: TextStyle( color: Colors.teal, fontSize: 18),),
-              subtitle: Text(bottomMenuItems[index].subtitle),
-              onTap: () {
-                Navigator.pop(context);
-                debugPrint(bottomMenuItems[index].title);
-              },
-            );
-          }),
-    );
-  }
-
 }
 
 class MenuModel {
