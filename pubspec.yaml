@@ -22,8 +22,8 @@ dependencies:
 
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
+  # flutter_test:
+  #  sdk: flutter
 
 flutter:
 
@@ -31,8 +31,6 @@ flutter:
 
   assets:
       - assets/img/
-    # - assets/font
-    # - assets/sounds
 
   fonts:
     - family: nunito
