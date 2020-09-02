@@ -31,9 +31,8 @@ flutter:
 
   assets:
       - assets/img/
-      - images/
-      - sounds/
-
+    # - assets/font
+    # - assets/sounds
 
   fonts:
     - family: nunito

@@ -6,7 +6,7 @@ PODS:
     - Flutter
   - path_provider (0.0.1):
     - Flutter
-  - share (0.5.2):
+  - share (0.0.1):
     - Flutter
 
 DEPENDENCIES:
@@ -32,9 +32,9 @@ SPEC CHECKSUMS:
   audioplayers: 84f968cea3f2deab00ec4f8ff53358b3c0b3992c
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   flutter_country_picker: b73efbc3f1b01519adb99bf8635865737b9422df
-  path_provider: fb74bd0465e96b594bb3b5088ee4a4e7bb1f2a9d
-  share: bae0a282aab4483288913fc4dc0b935d4b491f2e
+  path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
+  share: 0b2c3e82132f5888bccca3351c504d0003b3b410
 
-PODFILE CHECKSUM: 1b66dae606f75376c5f2135a8290850eeb09ae83
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.3
