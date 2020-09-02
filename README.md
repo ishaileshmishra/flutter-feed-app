@@ -17,5 +17,6 @@
 
   Download and install [APK](https://github.com/ishaileshmishra/healthnest/blob/master/assets/apk/app-release.apk?raw=true) to your android phone.
   
+  ### [DOWNLOAD](https://github.com/ishaileshmishra/healthnest/blob/master/assets/apk/app-release.apk?raw=true)
 
 
